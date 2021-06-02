@@ -1,0 +1,12 @@
+.icon-login {
+	fill: $black1;
+	width: 20px;
+	&:hover {
+		fill: $blue1;
+		transition-duration: 150ms;
+	}
+	&:active {
+		opacity: 0.5;
+		transition-duration: 150ms;
+	}
+}

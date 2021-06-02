@@ -1,0 +1,26 @@
+.organizer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 525px;
+	margin: 10px;
+	color: $black1;
+	label {
+		width: 100%;
+		margin-bottom: 22px;
+		font-weight: 500;
+		font-size: 22px;
+		line-height: 31px;
+	}
+	select {
+		width: 120px;
+		min-height: 56px;
+		font-weight: 400;
+		font-size: 30px;
+		line-height: 42px;
+		text-align: center;
+		border: 1px solid $black1;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+}

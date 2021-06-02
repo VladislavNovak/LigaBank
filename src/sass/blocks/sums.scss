@@ -1,0 +1,89 @@
+.sums {
+	display: flex;
+	flex-direction: column;
+}
+
+.sums__layout {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: stretch;
+	margin-bottom: 65px;
+}
+
+.sums__input {
+	width: 384px;
+	min-height: 56px;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 34px;
+	text-align: center;
+	border: 1px solid $black1;
+	border-radius: 4px;
+	&--error {
+		box-shadow: 0 0 3px 2px $red;
+	}
+}
+
+.sums__arrows {
+	display: flex;
+	align-items: flex-end;
+	margin: 10px 0 10px 0;
+}
+
+.sums__flatpickr {
+	position: relative;
+	margin: 10px;
+	width: 384px;
+	height: 56px;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 34px;
+	text-align: center;
+	border: 1px solid $black1;
+	border-radius: 4px;
+	&::-webkit-calendar-picker-indicator {
+		color: transparent;
+		opacity: 1;
+		background: none;
+		z-index: 1;
+		width: 60px;
+		height: 100%;
+		cursor: pointer;
+	}
+	&:before {
+		content: '';
+		background: url(/img/callss.svg) no-repeat;
+		position: absolute;
+		display: block;
+		width: 40px;
+		height: 45px;
+		top: 4px;
+		right: 12px;
+		color: $gray1;
+	}
+}
+
+.sums__submit {
+	width: 382px;
+	min-height: 56px;
+	margin: 10px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 25px;
+	color: $white3;
+	background-color: $blue1;
+	border: $blue2;
+	border-radius: 4px;
+	&:hover {
+		color: $blue1;
+		background-color: $white3;
+		border: 1px solid $blue1;
+		border-radius: 6px;
+		transition-duration: 150ms;
+	}
+	&:active {
+		opacity: 0.5;
+		transition-duration: 150ms;
+	}
+}

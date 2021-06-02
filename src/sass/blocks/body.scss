@@ -1,0 +1,14 @@
+body {
+	width: auto;
+	margin: 0 auto;
+	font-family: "Roboto", "Arial", sans-serif;
+	background-color: $white1;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 1366px;
+	background-color: $white2;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
