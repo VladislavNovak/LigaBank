@@ -1,18 +1,80 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {History} from '..';
-import {currencies, typeOfMoney, mocks} from '../../js/constants';
+import {PATTERN, money, rates} from '../../js/constants';
 
 const Main = () => {
-  let [cash, setCash] = useState(0);
-  let [conv, setConv] = useState(0);
+  const [currentAction, setCurrentAction] = useState({
+    [money.CASH.FIRST]: 0,
+    [money.TYPE.FIRST]: `RUB`,
+    [money.CASH.SECOND]: 0,
+    [money.TYPE.SECOND]: `RUB`,
+    currentDate: `25.11.2020`
+  });
 
-  const handleInputSum = (curValue, curClass) => {
-    if (curClass === typeOfMoney.CASH && curClass === typeOfMoney.EXCHANGED) {
-      setCash(curValue);
-      setConv(curValue);
+  const [history, setHistory] = useState([]);
+
+  const [isErrorValidity, checkValidation] = useState(false);
+
+  const handleBlurInput = ({target}) => {
+    if (PATTERN.exec(target.value)) {
+      target.value = parseFloat(target.value.replace(/,/g, '.'));
+    }
+  }
+
+  const convertCash = (inputName, value, otherCash, type, otherType) => {
+    checkValidation(false);
+    const cash = Number(value);
+    const selfFactor = (rates[currentAction[type]] ? rates[currentAction[type]].Value : 1)
+    const otherFactor = (rates[currentAction[otherType]] ? rates[currentAction[otherType]].Value : 1)
+    const rur = cash / otherFactor;
+    const converted = Math.floor(rur * selfFactor * 100) / 100;
+
+    setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted});
+  }
+
+  const changeCashByType = (selectName, value, cash) => {
+    const prevFactor = (rates[currentAction[selectName]] ? rates[currentAction[selectName]].Value : 1);
+    const nextFactor = (rates[value] ? rates[value].Value : 1);
+    const rur = currentAction[cash] / nextFactor;
+    const converted = Math.floor(rur * prevFactor * 100) / 100;
+
+    setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted});
+  }
+
+  const handleInputSum = ({name, value}) => {
+    switch (name) {
+      case money.CASH.FIRST:
+        convertCash(name, value, money.CASH.SECOND, money.TYPE.FIRST, money.TYPE.SECOND);
+        break;
+      case money.CASH.SECOND:
+        convertCash(name, value, money.CASH.FIRST, money.TYPE.SECOND, money.TYPE.FIRST);
+        break;
+      case money.TYPE.FIRST:
+        changeCashByType(name, value, money.CASH.FIRST);
+        break;
+      case money.TYPE.SECOND:
+        changeCashByType(name, value, money.CASH.SECOND);
+        break;
+    
+      default:
+        break;
     }
   };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if ((!currentAction[money.CASH.FIRST] && !currentAction[money.CASH.SECOND]) || (currentAction === history[history.length - 1])) {
+      checkValidation(true);
+      return;
+    }
+
+    const prevHistory = [...history];
+    prevHistory.unshift(currentAction)
+    if (prevHistory.length > 10) prevHistory.pop();
+
+    setHistory(prevHistory);
+  }
 
   return (
     <main>
@@ -26,7 +88,9 @@ const Main = () => {
         <div className="banner__cards"></div>
       </section>
 
-      <section className="converter">
+      <section
+        onSubmit={handleSubmit}
+        className="converter">
         <h2 className="converter__title">Конвертер валют</h2>
 
         <form className="sums">
@@ -35,19 +99,20 @@ const Main = () => {
             <label htmlFor="sums__cash">У меня есть</label>
             <input
               type="number"
-              className="sums__input sums__cash"
+              className={isErrorValidity ? `sums__input sums__cash sums__input--error` : `sums__input sums__cash`}
               min="0"
               step="any"
-              name="sums__cash"
-              id="sums__cash"
+              name="firstCash"
               aria-label="Введите сумму, которую необходимо поменять"
               title="Валюта"
-              value={conv}
-              onInput={({target}) => handleInputSum(target.value, typeOfMoney.CASH)}
+              value={currentAction[money.CASH.FIRST]}
+              onInput={({target}) => handleInputSum(target)}
+              onBlur={handleBlurInput}
               required />
               <select
                 className="sums__cash-type"
-                onChange={({target}) => handleInputSum(target.value, typeOfMoney.CASH_TYPE)} >
+                name="firstType"
+                onChange={({target}) => handleInputSum(target)} >
                 <option value="RUB">RUB</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -62,20 +127,19 @@ const Main = () => {
             <label htmlFor="sums__exchanged">Хочу приобрести</label>
             <input
               type="number"
-              className="sums__input sums__exchanged"
+              className={isErrorValidity ? `sums__input sums__exchanged sums__input--error` : `sums__input sums__exchanged`}
               min="0"
               step="any"
-              name="sums__exchanged"
-              id="sums__exchanged"
+              name="secondCash"
               aria-label="Введите сумму, которую необходимо поменять"
               title="Валюта"
-              value={cash}
-              onInput={({target}) => handleInputSum(target.value, typeOfMoney.EXCHANGED)}
+              value={currentAction[money.CASH.SECOND]}
+              onInput={({target}) => handleInputSum(target)}
               required />
-
               <select
                 className="sums__exchanged-type"
-                onChange={({target}) => handleInputSum(target.value, typeOfMoney.EXCHANGED_TYPE)} >
+                name="secondType"
+                onChange={({target}) => handleInputSum(target)} >
                 <option value="RUB">RUB</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -89,7 +153,7 @@ const Main = () => {
           </div>
         </form>
 
-        <History operations={mocks} />
+        <History history={history} />
       </section>
     </main>
   );

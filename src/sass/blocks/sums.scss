@@ -20,9 +20,10 @@
 	text-align: center;
 	border: 1px solid $black1;
 	border-radius: 4px;
-	&--error {
-		box-shadow: 0 0 3px 2px $red;
-	}
+}
+
+.sums__input--error {
+	box-shadow: 0 0 3px 2px $red;
 }
 
 .sums__arrows {

@@ -1,32 +1,44 @@
+export const PATTERN = /^[-0-9.,]+$/;
 export const currencies = [`RUB`, `USD`, `EUR`, `GBP`];
 
-export const typeOfMoney = {
-  CASH: `sums__cash`,
-  EXCHANGED: `sums__exchanged`,
-  CASH_TYPE: `sums__cash-type`,
-  EXCHANGED_TYPE: `sums__exchanged-type`,
+export const money = {
+  CASH: {
+    FIRST: `firstCash`, 
+    SECOND: `secondCash`
+  },
+  TYPE: {
+    FIRST: `firstType`, 
+    SECOND: `secondType`
+  },
 };
 
-export const mocks = [
-  {
-    currentDate: `25.11.2020`,
-    firstCash: 4566,
-    firstCashType: `RUB`,
-    secondCash: 62.34,
-    secondCashType: `USD`,
+export const rates = {
+  EUR: {
+    CharCode: "EUR",
+    ID: "R01239",
+    Name: "Евро",
+    Nominal: 1,
+    NumCode: "978",
+    Previous: 89.2644,
+    Value: 88.7545,
   },
-  {
-    currentDate: `26.11.2020`,
-    firstCash: 4566,
-    firstCashType: `RUB`,
-    secondCash: 62.34,
-    secondCashType: `USD`,
+  GBP: {
+    CharCode: "GBP",
+    ID: "R01035",
+    Name: "Фунт стерлингов Соединенного королевства",
+    Nominal: 1,
+    NumCode: "826",
+    Previous: 103.8072,
+    Value: 103.4236,
   },
-  {
-    currentDate: `27.11.2020`,
-    firstCash: 4566,
-    firstCashType: `RUB`,
-    secondCash: 62.34,
-    secondCashType: `USD`,
+  USD: {
+    CharCode: "USD",
+    ID: "R01235",
+    Name: "Доллар США",
+    Nominal: 1,
+    NumCode: "840",
+    Previous: 73.2636,
+    Value: 73.2721,
   },
-]
+  date: "2021-06-05T11:30:00+03:00",
+};
