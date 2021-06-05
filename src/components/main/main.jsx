@@ -18,20 +18,20 @@ const Main = () => {
 
   const handleBlurInput = ({target}) => {
     if (PATTERN.exec(target.value)) {
-      target.value = parseFloat(target.value.replace(/,/g, '.'));
+      target.value = parseFloat(target.value.replace(/,/g, `.`));
     }
-  }
+  };
 
   const convertCash = (inputName, value, otherCash, type, otherType) => {
     checkValidation(false);
     const cash = Number(value);
-    const selfFactor = (rates[currentAction[type]] ? rates[currentAction[type]].Value : 1)
-    const otherFactor = (rates[currentAction[otherType]] ? rates[currentAction[otherType]].Value : 1)
+    const selfFactor = (rates[currentAction[type]] ? rates[currentAction[type]].Value : 1);
+    const otherFactor = (rates[currentAction[otherType]] ? rates[currentAction[otherType]].Value : 1);
     const rur = cash / otherFactor;
     const converted = Math.floor(rur * selfFactor * 100) / 100;
 
     setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted});
-  }
+  };
 
   const changeCashByType = (selectName, value, cash) => {
     const prevFactor = (rates[currentAction[selectName]] ? rates[currentAction[selectName]].Value : 1);
@@ -40,7 +40,7 @@ const Main = () => {
     const converted = Math.floor(rur * prevFactor * 100) / 100;
 
     setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted});
-  }
+  };
 
   const handleInputSum = ({name, value}) => {
     switch (name) {
@@ -56,7 +56,7 @@ const Main = () => {
       case money.TYPE.SECOND:
         changeCashByType(name, value, money.CASH.SECOND);
         break;
-    
+
       default:
         break;
     }
@@ -70,11 +70,13 @@ const Main = () => {
     }
 
     const prevHistory = [...history];
-    prevHistory.unshift(currentAction)
-    if (prevHistory.length > 10) prevHistory.pop();
+    prevHistory.unshift(currentAction);
+    if (prevHistory.length > 10) {
+      prevHistory.pop();
+    }
 
     setHistory(prevHistory);
-  }
+  };
 
   return (
     <main>
@@ -94,21 +96,21 @@ const Main = () => {
         <h2 className="converter__title">Конвертер валют</h2>
 
         <form className="sums">
-          <div className="sums__layout">       
-          <div className="organizer">
-            <label htmlFor="sums__cash">У меня есть</label>
-            <input
-              type="number"
-              className={isErrorValidity ? `sums__input sums__cash sums__input--error` : `sums__input sums__cash`}
-              min="0"
-              step="any"
-              name="firstCash"
-              aria-label="Введите сумму, которую необходимо поменять"
-              title="Валюта"
-              value={currentAction[money.CASH.FIRST]}
-              onInput={({target}) => handleInputSum(target)}
-              onBlur={handleBlurInput}
-              required />
+          <div className="sums__layout">
+            <div className="organizer">
+              <label htmlFor="sums__cash">У меня есть</label>
+              <input
+                type="number"
+                className={isErrorValidity ? `sums__input sums__cash sums__input--error` : `sums__input sums__cash`}
+                min="0"
+                step="any"
+                name="firstCash"
+                aria-label="Введите сумму, которую необходимо поменять"
+                title="Валюта"
+                value={currentAction[money.CASH.FIRST]}
+                onInput={({target}) => handleInputSum(target)}
+                onBlur={handleBlurInput}
+                required />
               <select
                 className="sums__cash-type"
                 name="firstType"
@@ -117,25 +119,25 @@ const Main = () => {
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
-              </select>            
-          </div>
+              </select>
+            </div>
             <div className="sums__arrows">
               <svg width="80" height="55" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-arrows" /></svg>
             </div>
 
             <div className="organizer">
-            <label htmlFor="sums__exchanged">Хочу приобрести</label>
-            <input
-              type="number"
-              className={isErrorValidity ? `sums__input sums__exchanged sums__input--error` : `sums__input sums__exchanged`}
-              min="0"
-              step="any"
-              name="secondCash"
-              aria-label="Введите сумму, которую необходимо поменять"
-              title="Валюта"
-              value={currentAction[money.CASH.SECOND]}
-              onInput={({target}) => handleInputSum(target)}
-              required />
+              <label htmlFor="sums__exchanged">Хочу приобрести</label>
+              <input
+                type="number"
+                className={isErrorValidity ? `sums__input sums__exchanged sums__input--error` : `sums__input sums__exchanged`}
+                min="0"
+                step="any"
+                name="secondCash"
+                aria-label="Введите сумму, которую необходимо поменять"
+                title="Валюта"
+                value={currentAction[money.CASH.SECOND]}
+                onInput={({target}) => handleInputSum(target)}
+                required />
               <select
                 className="sums__exchanged-type"
                 name="secondType"
@@ -144,8 +146,8 @@ const Main = () => {
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
-              </select>            
-          </div>
+              </select>
+            </div>
           </div>
           <div className="sums__layout">
             <input className="sums__flatpickr" type="date" />
@@ -157,6 +159,6 @@ const Main = () => {
       </section>
     </main>
   );
-}
+};
 
 export default Main;
