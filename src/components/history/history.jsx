@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {money} from '../../js/constants';
 
 const History = ({history}) => {
   return (
@@ -22,6 +24,16 @@ const History = ({history}) => {
       <button className="history__reset">Очистить историю</button>
     </section>
   );
-}
+};
+
+History.propTypes = ({
+  history: PropTypes.arrayOf(PropTypes.shape({
+    [money.CASH.FIRST]: PropTypes.number.isRequired,
+    [money.TYPE.FIRST]: PropTypes.string.isRequired,
+    [money.CASH.SECOND]: PropTypes.number.isRequired,
+    [money.TYPE.SECOND]: PropTypes.string.isRequired,
+    currentDate: PropTypes.string.isRequired,
+  }))
+});
 
 export default History;

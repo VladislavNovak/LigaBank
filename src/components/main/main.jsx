@@ -34,6 +34,7 @@ const Main = () => {
   };
 
   const changeCashByType = (selectName, value, cash) => {
+    checkValidation(false);
     const prevFactor = (rates[currentAction[selectName]] ? rates[currentAction[selectName]].Value : 1);
     const nextFactor = (rates[value] ? rates[value].Value : 1);
     const rur = currentAction[cash] / nextFactor;
@@ -64,7 +65,11 @@ const Main = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if ((!currentAction[money.CASH.FIRST] && !currentAction[money.CASH.SECOND]) || (currentAction === history[history.length - 1])) {
+    const isEmptyValues = !currentAction[money.CASH.FIRST] && !currentAction[money.CASH.SECOND];
+    const isNotChangedValues = currentAction === history[history.length - 1];
+    const isEqualValues = currentAction[money.CASH.FIRST] === currentAction[money.CASH.SECOND];
+
+    if (isEmptyValues || isNotChangedValues || isEqualValues) {
       checkValidation(true);
       return;
     }

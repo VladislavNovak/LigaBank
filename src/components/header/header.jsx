@@ -23,6 +23,6 @@ const Header = () => {
       </Link>
     </header>
   );
-}
+};
 
 export default Header;

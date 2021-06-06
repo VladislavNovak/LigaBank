@@ -57,6 +57,6 @@ const Footer = () => {
       </ul>
     </footer>
   );
-}
+};
 
 export default Footer;

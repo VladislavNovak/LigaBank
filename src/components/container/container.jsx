@@ -9,6 +9,6 @@ const Container = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Container;
