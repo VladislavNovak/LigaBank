@@ -1,4 +1,5 @@
 import React from 'react';
+// import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 import {money} from '../../js/constants';
 
@@ -11,7 +12,8 @@ const History = ({history}) => {
           history.map(({currentDate, firstCash, firstType, secondCash, secondType}) => (
             <li key={`${currentDate}-${firstCash}-${firstType}-${secondCash}-${secondType}`}
               className="history__item">
-              <span className="history__date">{currentDate}</span>
+              {/* <time className="history__date" dateTime={dayjs(currentDate).format(`YYYY-MM-DD`)}>{currentDate}</time> */}
+              <time className="history__date" >{currentDate}</time>
               <span>{`${firstCash} ${firstType}`}</span>
               <span className="history__arrow">
                 <svg width="41" height="18" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-arrow"></use></svg>

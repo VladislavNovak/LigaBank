@@ -1,20 +1,25 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import dayjs from 'dayjs';
 import {History} from '..';
 import {PATTERN, money, rates} from '../../js/constants';
 
 const Main = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const [currentAction, setCurrentAction] = useState({
     [money.CASH.FIRST]: 0,
     [money.TYPE.FIRST]: `RUB`,
     [money.CASH.SECOND]: 0,
     [money.TYPE.SECOND]: `RUB`,
-    currentDate: `25.11.2020`
+    currentDate: dayjs(startDate).format(`DD.MM.YYYY`)
   });
 
   const [history, setHistory] = useState([]);
 
   const [isErrorValidity, checkValidation] = useState(false);
+
 
   const handleBlurInput = ({target}) => {
     if (PATTERN.exec(target.value)) {
@@ -30,7 +35,7 @@ const Main = () => {
     const rur = cash / otherFactor;
     const converted = Math.floor(rur * selfFactor * 100) / 100;
 
-    setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted});
+    setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted, currentDate: dayjs(startDate).format(`DD.MM.YYYY`)});
   };
 
   const changeCashByType = (selectName, value, cash) => {
@@ -40,7 +45,7 @@ const Main = () => {
     const rur = currentAction[cash] / nextFactor;
     const converted = Math.floor(rur * prevFactor * 100) / 100;
 
-    setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted});
+    setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted, currentDate: dayjs(startDate).format(`DD.MM.YYYY`)});
   };
 
   const handleInputSum = ({name, value}) => {
@@ -81,6 +86,9 @@ const Main = () => {
     }
 
     setHistory(prevHistory);
+
+    // eslint-disable-next-line no-console
+    console.log(`history: `, history);
   };
 
   return (
@@ -155,7 +163,16 @@ const Main = () => {
             </div>
           </div>
           <div className="sums__layout">
-            <input className="sums__flatpickr" type="date" />
+            <div className="sums__datepicker-wrapper">
+              <label>
+                <DatePicker
+                  className="sums__datepicker"
+                  selected={startDate}
+                  dateFormat={`dd.MM.yyyy`}
+                  onChange={(date) => setStartDate(date)} />
+                <svg className="sums__datepicker-icon" width="41" height="44" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-calendar" /></svg>
+              </label>
+            </div>
             <button className="sums__submit" type="submit">Сохранить результат</button>
           </div>
         </form>
