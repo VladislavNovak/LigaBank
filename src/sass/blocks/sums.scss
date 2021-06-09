@@ -32,33 +32,6 @@
 	margin: 10px 0 10px 0;
 }
 
-.sums__datepicker-wrapper {
-  position: relative;
-}
-
-.sums__datepicker {
-	margin: 10px;
-	width: 384px;
-	height: 56px;
-	font-weight: 500;
-	font-size: 24px;
-	line-height: 34px;
-	text-align: center;
-	border: 1px solid $black1;
-	border-radius: 4px;
-  &:focus {
-    background-color: $blue2;
-    color: $white2;
-		transition-duration: 150ms;
-	}
-}
-
-.sums__datepicker-icon {
-	position: absolute;
-  top: 15px;
-  right: 22px;
-}
-
 .sums__submit {
 	width: 382px;
 	min-height: 56px;

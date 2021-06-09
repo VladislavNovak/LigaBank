@@ -9,6 +9,4 @@ export const getCurrencies = async (dateQuery = `https://www.cbr-xml-daily.ru/da
   rates.USD = result.Valute.USD;
   rates.EUR = result.Valute.EUR;
   rates.GBP = result.Valute.GBP;
-
-  // previousURL = result.PreviousURL;
 };
