@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
-import {History} from '..';
+import {History, CustomDatePicker, Organizer} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
 const Main = () => {
   const resetState = (date = (new Date())) => ({
     [money.cash.FIRST]: 0,
-    [money.type.FIRST]: `RUB`,
+    [money.type.FIRST]: `USD`,
     [money.cash.SECOND]: 0,
     [money.type.SECOND]: `RUB`,
     [money.selectedDate]: date
@@ -19,8 +18,7 @@ const Main = () => {
 
   const [history, setHistory] = useState([]);
 
-  const [isValid, setValid] = useState(true);
-
+  const [isCurrentActionValid, setCurrentActionValid] = useState(true);
 
   const handleBlurInput = ({target}) => {
     if (PATTERN.exec(target.value)) {
@@ -29,7 +27,7 @@ const Main = () => {
   };
 
   const convertCash = (inputName, value, otherCash, type, otherType) => {
-    setValid(true);
+    setCurrentActionValid(true);
     const cash = Number(value);
     const selfFactor = (rates[currentAction[type]] ? rates[currentAction[type]].Value : 1);
     const otherFactor = (rates[currentAction[otherType]] ? rates[currentAction[otherType]].Value : 1);
@@ -40,7 +38,7 @@ const Main = () => {
   };
 
   const changeCashByType = (selectName, value, cash) => {
-    setValid(true);
+    setCurrentActionValid(true);
     const prevFactor = (rates[currentAction[selectName]] ? rates[currentAction[selectName]].Value : 1);
     const nextFactor = (rates[value] ? rates[value].Value : 1);
     const rur = currentAction[cash] / nextFactor;
@@ -51,7 +49,7 @@ const Main = () => {
 
   const changeCashByDate = (date) => {
     getCurrencies(`https://www.cbr-xml-daily.ru/archive/${dayjs(date).format(`YYYY/MM/DD`)}/daily_json.js`);
-    setValid(true);
+    setCurrentActionValid(true);
 
     setCurrentAction(resetState(date));
   };
@@ -86,7 +84,7 @@ const Main = () => {
     const isEqualValues = currentAction[money.cash.FIRST] === currentAction[money.cash.SECOND];
 
     if (isEmptyValues || isNotChangedValues || isEqualValues) {
-      setValid(false);
+      setCurrentActionValid(false);
       return;
     }
 
@@ -118,78 +116,42 @@ const Main = () => {
 
         <form className="sums">
           <div className="sums__layout">
-            <div className="organizer">
-              <label htmlFor="sums__cash">У меня есть</label>
-              <input
-                type="number"
-                className={isValid ? `sums__input sums__cash` : `sums__input sums__cash sums__input--error`}
-                min="0"
-                step="any"
-                name={money.cash.FIRST}
-                aria-label="Введите сумму, которую необходимо поменять"
-                title="Валюта"
-                value={currentAction[money.cash.FIRST]}
-                onInput={({target}) => handleAction(target)}
-                onBlur={handleBlurInput}
-                required />
-              <select
-                className="sums__cash-type"
-                name={money.type.FIRST}
-                value={currentAction[money.type.FIRST]}
-                onChange={({target}) => handleAction(target)} >
-                <option value="RUB">RUB</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-              </select>
-            </div>
+            <Organizer
+              legend={`У меня есть`}
+              classElement={`organazer__cash`}
+              isCurrentActionValid={isCurrentActionValid}
+              cashName={money.cash.FIRST}
+              cashValue={currentAction[money.cash.FIRST]}
+              handleAction={handleAction}
+              handleBlurInput={handleBlurInput}
+              typeName={money.type.FIRST}
+              typeValue={currentAction[money.type.FIRST]} />
+
             <div className="sums__arrows">
               <svg width="80" height="55" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-arrows" /></svg>
             </div>
 
-            <div className="organizer">
-              <label htmlFor="sums__exchanged">Хочу приобрести</label>
-              <input
-                type="number"
-                className={isValid ? `sums__input sums__exchanged` : `sums__input sums__exchanged sums__input--error`}
-                min="0"
-                step="any"
-                name={money.cash.SECOND}
-                aria-label="Введите сумму, которую необходимо поменять"
-                title="Валюта"
-                value={currentAction[money.cash.SECOND]}
-                onInput={({target}) => handleAction(target)}
-                required />
-              <select
-                className="sums__exchanged-type"
-                name={money.type.SECOND}
-                value={currentAction[money.type.SECOND]}
-                onChange={({target}) => handleAction(target)} >
-                <option value="RUB">RUB</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-              </select>
-            </div>
+            <Organizer
+              legend={`Хочу приобрести`}
+              classElement={`organazer__exchanged`}
+              isCurrentActionValid={isCurrentActionValid}
+              cashName={money.cash.SECOND}
+              cashValue={currentAction[money.cash.SECOND]}
+              handleAction={handleAction}
+              handleBlurInput={handleBlurInput}
+              typeName={money.type.SECOND}
+              typeValue={currentAction[money.type.SECOND]} />
           </div>
           <div className="sums__layout">
-            <div className="datepicker">
-              <label>
-                <DatePicker
-                  className="datepicker__core"
-                  selected={currentAction[money.selectedDate]}
-                  dateFormat={`dd.MM.yyyy`}
-                  minDate={new Date(dayjs().subtract(1, `month`))}
-                  maxDate={new Date()}
-                  onChange={(date) => handleAction({value: date, name: money.selectedDate})} />
-                <svg className="datepicker__core-icon" width="41" height="44" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-calendar" /></svg>
-              </label>
-            </div>
+            <CustomDatePicker
+              selectedDate={currentAction[money.selectedDate]}
+              handleAction={handleAction} />
+
             <button className="sums__submit" type="submit">Сохранить результат</button>
           </div>
         </form>
 
-        <History history={history} />
+        {history.length ? <History history={history} /> : null}
       </section>
     </main>
   );

@@ -37,5 +37,4 @@ History.propTypes = ({
   }))
 });
 
-// selectedDate: PropTypes.string.isRequired,
 export default History;
