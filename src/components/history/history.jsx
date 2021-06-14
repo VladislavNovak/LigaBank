@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import {money} from '../../js/constants';
 
-const History = ({history}) => {
+const History = ({history, onClickButtonReset}) => {
+  // eslint-disable-next-line no-console
+  console.log(`В history `);
   return (
     <section className="history">
       <h2 className="history__title">История конвертации</h2>
@@ -22,12 +24,15 @@ const History = ({history}) => {
           ))
         }
       </ul>
-      <button className="history__reset">Очистить историю</button>
+      <button
+        onClick={onClickButtonReset}
+        className="history__reset">Очистить историю</button>
     </section>
   );
 };
 
-History.propTypes = ({
+History.propTypes = {
+  onClickButtonReset: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.shape({
     [money.cash.FIRST]: PropTypes.number.isRequired,
     [money.type.FIRST]: PropTypes.string.isRequired,
@@ -35,6 +40,6 @@ History.propTypes = ({
     [money.type.SECOND]: PropTypes.string.isRequired,
     [money.selectedDate]: PropTypes.date,
   }))
-});
+};
 
 export default History;

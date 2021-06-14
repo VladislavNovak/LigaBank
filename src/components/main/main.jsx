@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
-import {History, CustomDatePicker, Organizer} from '..';
+import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
@@ -77,6 +77,10 @@ const Main = () => {
     }
   };
 
+  const handleCleareHistory = () => {
+    setHistory([]);
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const isEmptyValues = !currentAction[money.cash.FIRST] && !currentAction[money.cash.SECOND];
@@ -110,6 +114,7 @@ const Main = () => {
       </section>
 
       <section
+        id="Converter"
         onSubmit={handleSubmit}
         className="converter">
         <h2 className="converter__title">Конвертер валют</h2>
@@ -151,7 +156,7 @@ const Main = () => {
           </div>
         </form>
 
-        {history.length ? <History history={history} /> : null}
+        {history.length ? <History history={history} onClickButtonReset={handleCleareHistory} /> : <HistoryEmpty />}
       </section>
     </main>
   );

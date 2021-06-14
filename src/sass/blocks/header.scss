@@ -1,9 +1,18 @@
 .header {
+  position: fixed;
+  transition: top 0.3s;
+  top: 0;
+  width: 1170px;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 98px;
 	background: $white3;
+}
+
+.header--hidden {
+  top: -91px;
 }
 
 .header__navigator {
@@ -33,6 +42,8 @@
 		text-decoration: none;
 		word-wrap: break-word;
 		color: $black1;
+    user-select: none;
+    cursor: pointer;
 		&:hover {
 			color: $blue1;
 			transition-duration: 150ms;
