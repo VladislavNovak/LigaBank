@@ -63,6 +63,8 @@
 	line-height: 18.75px;
 	text-decoration: none;
 	color: $black1;
+  user-select: none;
+  cursor: pointer;
 	&:hover {
 		color: $blue1;
 		transition-duration: 150ms;

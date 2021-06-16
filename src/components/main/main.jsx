@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
 import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
@@ -13,6 +13,8 @@ const Main = () => {
     [money.type.SECOND]: `RUB`,
     [money.selectedDate]: date
   });
+
+  useEffect(getCurrencies, []);
 
   const [currentAction, setCurrentAction] = useState(resetState());
 
@@ -84,7 +86,7 @@ const Main = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const isEmptyValues = !currentAction[money.cash.FIRST] && !currentAction[money.cash.SECOND];
-    const isNotChangedValues = currentAction === history[history.length - 1];
+    const isNotChangedValues = currentAction === history[0];
     const isEqualValues = currentAction[money.cash.FIRST] === currentAction[money.cash.SECOND];
 
     if (isEmptyValues || isNotChangedValues || isEqualValues) {
