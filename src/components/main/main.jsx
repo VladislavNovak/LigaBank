@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
 import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
+// import {History, HistoryEmpty, CustomDatePicker, Organizer, Slider} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
@@ -108,12 +109,14 @@ const Main = () => {
       <section className="banner">
         <h1 className="visually-hidden">Причины обратиться в Лига Банк:</h1>
         <div className="banner__loan">
-          <h2 className="banner__title">Лига Банк</h2>
-          <p className="banner__propose">Кредиты на любой случай</p>
+          <h2 className="banner__title">LIGA bank</h2>
+          <p className="banner__propose">loans for any occasion</p>
           <Link className="banner__redirect" to="#">Рассчитать кредит</Link>
         </div>
         <div className="banner__cards"></div>
       </section>
+
+      {/* <Slider></Slider> */}
 
       <section
         id="Converter"
@@ -135,7 +138,23 @@ const Main = () => {
               typeValue={currentAction[money.type.FIRST]} />
 
             <div className="sums__arrows">
-              <svg width="80" height="55" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-arrows" /></svg>
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                className="arrows" width="80" height="55" viewBox="0 0 430 430" xmlSpace="preserve">
+                <g>
+                  <path className="sums__arrows-0" d="M387.1,138.6H42.9c-3.3,0-6-2.7-6-6s2.7-6,6-6h344.2c3.3,0,6,2.7,6,6S390.4,138.6,387.1,138.6z"/>
+                  <path className="sums__arrows-0" d="M387.1,138.6c-1.5,0-3.1-0.6-4.2-1.8l-53.4-53.4c-2.3-2.3-2.3-6.1,0-8.5c2.3-2.3,6.1-2.3,8.5,0l53.4,53.4
+                    c2.3,2.3,2.3,6.1,0,8.5C390.2,138,388.6,138.6,387.1,138.6z"/>
+                  <path className="sums__arrows-0" d="M333.7,192c-1.5,0-3.1-0.6-4.2-1.8c-2.3-2.3-2.3-6.1,0-8.5l53.4-53.4c2.3-2.3,6.1-2.3,8.5,0
+                    c2.3,2.3,2.3,6.1,0,8.5l-53.4,53.4C336.8,191.4,335.2,192,333.7,192z"/>
+                </g>
+                <g>
+                  <path className="sums__arrows-1" d="M387.1,303.4H42.9c-3.3,0-6-2.7-6-6s2.7-6,6-6h344.2c3.3,0,6,2.7,6,6S390.4,303.4,387.1,303.4z"/>
+                  <path className="sums__arrows-1" d="M42.9,303.4c-1.5,0-3.1-0.6-4.2-1.8c-2.3-2.3-2.3-6.1,0-8.5l53.4-53.4c2.3-2.3,6.1-2.3,8.5,0
+                    c2.3,2.3,2.3,6.1,0,8.5l-53.4,53.4C46,302.9,44.5,303.4,42.9,303.4z"/>
+                  <path className="sums__arrows-1" d="M96.3,356.8c-1.5,0-3.1-0.6-4.2-1.8l-53.4-53.4c-2.3-2.3-2.3-6.1,0-8.5c2.3-2.3,6.1-2.3,8.5,0l53.4,53.4
+                    c2.3,2.3,2.3,6.1,0,8.5C99.4,356.3,97.9,356.8,96.3,356.8z"/>
+                </g>
+              </svg>
             </div>
 
             <Organizer

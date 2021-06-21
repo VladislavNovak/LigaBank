@@ -53,3 +53,13 @@
        url('../../fonts/work-sans-v9-latin-700.woff') format('woff'), /* Modern Browsers */
        url('../../fonts/work-sans-v9-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
 }
+/* LondrinaOutline-Regular */
+@font-face {
+  font-family: 'LondrinaOutline';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('../../fonts/LondrinaOutline-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../fonts/LondrinaOutline-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+}

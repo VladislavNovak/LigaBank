@@ -3,7 +3,7 @@ import React from 'react';
 const HistoryEmpty = () => {
   return (
     <section className="history">
-      <p className="history-notice">Чтобы увидеть историю конвертации - ведите сумму и сохраните рузельтат</p>
+      <p className="history-notice">to see the history of conversion, enter the amount and save the result</p>
     </section>
   );
 };
