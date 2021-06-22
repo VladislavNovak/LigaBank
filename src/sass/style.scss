@@ -1,15 +1,18 @@
 @import "./setup/fonts.scss";
 @import "./setup/variables.scss";
-@import "./blocks/header.scss";
-@import "./blocks/banner.scss";
-@import "./blocks/sums.scss";
-@import "./blocks/history.scss";
-@import "./blocks/organizer.scss";
-@import "./blocks/footer.scss";
-@import "./blocks/logo.scss";
-@import "./blocks/converter.scss";
-@import "./blocks/body.scss";
+
+@import "./blocks/arrows.scss";
 @import "./blocks/auxilairy.scss";
+@import "./blocks/banner.scss";
+@import "./blocks/body.scss";
+@import "./blocks/converter.scss";
 @import "./blocks/datepicker.scss";
+@import "./blocks/footer.scss";
+@import "./blocks/header.scss";
+@import "./blocks/history.scss";
+@import "./blocks/login";
+@import "./blocks/logo.scss";
+@import "./blocks/organizer.scss";
 @import "./blocks/slider.scss";
+@import "./blocks/sums.scss";
 @import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';

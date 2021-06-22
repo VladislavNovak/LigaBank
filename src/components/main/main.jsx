@@ -111,7 +111,7 @@ const Main = () => {
         <div className="banner__loan">
           <h2 className="banner__title">LIGA bank</h2>
           <p className="banner__propose">loans for any occasion</p>
-          <Link className="banner__redirect" to="#">Рассчитать кредит</Link>
+          <Link className="banner__redirect" to="#">Calculate a Loan</Link>
         </div>
         <div className="banner__cards"></div>
       </section>
@@ -122,12 +122,12 @@ const Main = () => {
         id="Converter"
         onSubmit={handleSubmit}
         className="converter">
-        <h2 className="converter__title">Конвертер валют</h2>
+        <h2 className="converter__title">Currency Converter</h2>
 
         <form className="sums">
           <div className="sums__layout">
             <Organizer
-              legend={`У меня есть`}
+              legend={`I have the amount`}
               classElement={`organazer__cash`}
               isCurrentActionValid={isCurrentActionValid}
               cashName={money.cash.FIRST}
@@ -137,28 +137,26 @@ const Main = () => {
               typeName={money.type.FIRST}
               typeValue={currentAction[money.type.FIRST]} />
 
-            <div className="sums__arrows">
-              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                className="arrows" width="80" height="55" viewBox="0 0 430 430" xmlSpace="preserve">
-                <g>
-                  <path className="sums__arrows-0" d="M387.1,138.6H42.9c-3.3,0-6-2.7-6-6s2.7-6,6-6h344.2c3.3,0,6,2.7,6,6S390.4,138.6,387.1,138.6z"/>
-                  <path className="sums__arrows-0" d="M387.1,138.6c-1.5,0-3.1-0.6-4.2-1.8l-53.4-53.4c-2.3-2.3-2.3-6.1,0-8.5c2.3-2.3,6.1-2.3,8.5,0l53.4,53.4
-                    c2.3,2.3,2.3,6.1,0,8.5C390.2,138,388.6,138.6,387.1,138.6z"/>
-                  <path className="sums__arrows-0" d="M333.7,192c-1.5,0-3.1-0.6-4.2-1.8c-2.3-2.3-2.3-6.1,0-8.5l53.4-53.4c2.3-2.3,6.1-2.3,8.5,0
-                    c2.3,2.3,2.3,6.1,0,8.5l-53.4,53.4C336.8,191.4,335.2,192,333.7,192z"/>
+            <div className="arrows">
+              <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
+                  <polygon className="arrows__arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <polygon className="arrows__arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
                 </g>
+              </svg>
+
+              <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <g>
-                  <path className="sums__arrows-1" d="M387.1,303.4H42.9c-3.3,0-6-2.7-6-6s2.7-6,6-6h344.2c3.3,0,6,2.7,6,6S390.4,303.4,387.1,303.4z"/>
-                  <path className="sums__arrows-1" d="M42.9,303.4c-1.5,0-3.1-0.6-4.2-1.8c-2.3-2.3-2.3-6.1,0-8.5l53.4-53.4c2.3-2.3,6.1-2.3,8.5,0
-                    c2.3,2.3,2.3,6.1,0,8.5l-53.4,53.4C46,302.9,44.5,303.4,42.9,303.4z"/>
-                  <path className="sums__arrows-1" d="M96.3,356.8c-1.5,0-3.1-0.6-4.2-1.8l-53.4-53.4c-2.3-2.3-2.3-6.1,0-8.5c2.3-2.3,6.1-2.3,8.5,0l53.4,53.4
-                    c2.3,2.3,2.3,6.1,0,8.5C99.4,356.3,97.9,356.8,96.3,356.8z"/>
+                  <polygon className="arrows__arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <polygon className="arrows__arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                  <path d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
                 </g>
               </svg>
             </div>
 
             <Organizer
-              legend={`Хочу приобрести`}
+              legend={`I want to buy`}
               classElement={`organazer__exchanged`}
               isCurrentActionValid={isCurrentActionValid}
               cashName={money.cash.SECOND}

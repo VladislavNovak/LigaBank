@@ -4,8 +4,6 @@ import dayjs from 'dayjs';
 import {money} from '../../js/constants';
 
 const History = ({history, onClickButtonReset}) => {
-  // eslint-disable-next-line no-console
-  console.log(`В history `);
   return (
     <section className="history">
       <h2 className="history__title">История конвертации</h2>

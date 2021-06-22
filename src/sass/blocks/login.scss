@@ -1,0 +1,49 @@
+.login {
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    box-shadow: 0 0 5px $green1,
+      0 0 10px $green1,
+      0 0 30px $green1,
+      0 0 60px $green1,
+      0 0 120px $green1;
+    background: $green3;
+  }
+
+  &:active {
+    box-shadow: 0 0 5px $green2,
+      0 0 10px $green2,
+      0 0 30px $green2,
+      0 0 60px $green2,
+      0 0 120px $green2;
+    background: $green3;
+    transition-duration: 150ms;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 0 5px;
+    word-wrap: break-word;
+    color: $lightCyan;
+    user-select: none;
+    transition: 0.5s;
+
+    &:hover {
+      transition-duration: 150ms;
+      color: #112;
+		}
+  }
+
+  svg {
+    width: 16px;
+    height: auto;
+    fill: $white1;
+  }
+}

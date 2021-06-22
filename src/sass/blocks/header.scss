@@ -35,38 +35,33 @@
 	a {
 		font-weight: 400;
 		font-size: 16px;
-		line-height: 19px;
+		line-height: 22px;
+    padding: 0 5px;
 		text-decoration: none;
 		word-wrap: break-word;
-		color: $white1;
+    border-radius: 3px;
+		color: $lightCyan;
     user-select: none;
     cursor: pointer;
+    transition: 0.5s;
+
 		&:hover {
-			color: $red;
-			transition-duration: 150ms;
-      text-shadow: 0 0 20px $purple;
+      box-shadow: 0 0 5px $green1,
+        0 0 10px $green1,
+        0 0 30px $green1,
+        0 0 60px $green1,
+        0 0 120px $green1;
+      background: $green3;
+      color: #112;
 		}
 		&:active {
-			color: $purple;
+      box-shadow: 0 0 5px $green2,
+        0 0 10px $green2,
+        0 0 30px $green2,
+        0 0 60px $green2,
+        0 0 120px $green2;
+      background: $green3;
 			transition-duration: 150ms;
 		}
 	}
-}
-
-.header__login {
-  margin-left: 25px;
-	text-decoration: none;
-  cursor: pointer;
-  &-icon {
-    fill: $white1;
-    width: 45px;
-    &:hover {
-      fill: $red;
-      transition-duration: 150ms;
-    }
-    &:active {
-      color: $purple;
-      transition-duration: 150ms;
-    }
-  }
 }
