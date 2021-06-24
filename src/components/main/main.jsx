@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
-// import {History, HistoryEmpty, CustomDatePicker, Organizer, Slider} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
@@ -18,6 +19,7 @@ const Main = () => {
   useEffect(getCurrencies, []);
 
   const [currentAction, setCurrentAction] = useState(resetState());
+  const [direction, setDirection] = useState(`arrows`);
 
   const [history, setHistory] = useState([]);
 
@@ -60,15 +62,19 @@ const Main = () => {
   const handleAction = ({name, value}) => {
     switch (name) {
       case money.cash.FIRST:
+        setDirection(`arrows`);
         convertCash(name, value, money.cash.SECOND, money.type.FIRST, money.type.SECOND);
         break;
       case money.cash.SECOND:
+        setDirection(`arrows arrows--left`);
         convertCash(name, value, money.cash.FIRST, money.type.SECOND, money.type.FIRST);
         break;
       case money.type.FIRST:
+        setDirection(`arrows arrows--left`);
         changeCashByType(name, value, money.cash.FIRST);
         break;
       case money.type.SECOND:
+        setDirection(`arrows`);
         changeCashByType(name, value, money.cash.SECOND);
         break;
       case money.selectedDate:
@@ -116,8 +122,6 @@ const Main = () => {
         <div className="banner__cards"></div>
       </section>
 
-      {/* <Slider></Slider> */}
-
       <section
         id="Converter"
         onSubmit={handleSubmit}
@@ -137,23 +141,7 @@ const Main = () => {
               typeName={money.type.FIRST}
               typeValue={currentAction[money.type.FIRST]} />
 
-            <div className="arrows">
-              <svg width="18px" height="17px" viewBox="0 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <g id="prev" transform="translate(8.500000, 8.500000) scale(-1, 1) translate(-8.500000, -8.500000)">
-                  <polygon className="arrows__arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                  <polygon className="arrows__arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                  <path d="M-1.48029737e-15,0.56157424 L-1.48029737e-15,16.1929159 L9.708,8.33860465 L-2.66453526e-15,0.56157424 L-1.48029737e-15,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
-                </g>
-              </svg>
-
-              <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <g>
-                  <polygon className="arrows__arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                  <polygon className="arrows__arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                  <path d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
-                </g>
-              </svg>
-            </div>
+            <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
 
             <Organizer
               legend={`I want to buy`}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import {currencies} from '../../js/constants';
 
 const Organizer = ({legend, classElement, isCurrentActionValid, cashName, cashValue, handleAction, handleBlurInput, typeName, typeValue}) => {
@@ -23,8 +24,8 @@ const Organizer = ({legend, classElement, isCurrentActionValid, cashName, cashVa
         name={typeName}
         value={typeValue}
         onChange={({target}) => handleAction(target)} >
-        {currencies.map((item) => (
-          <option key={item} value={item}>{item}</option>
+        {Object.entries(currencies).map(([name, value]) => (
+          <option key={name} value={name}>{name} {value}</option>
         ))}
       </select>
     </div>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const Scrambler = ({text, obfuscator = `&qWfD?#-&%L&56%$+&%4L9&%$`}) => {
+const Scrambler = ({text, elClassName, obfuscator = `.....//\\||---&qWfD?#-&%L&56%$+&%4L9&%$`}) => {
 
   const shuffle = (word) => [...word].sort(() => 0.5 - Math.random()).join(``);
 
@@ -38,12 +38,13 @@ const Scrambler = ({text, obfuscator = `&qWfD?#-&%L&56%$+&%4L9&%$`}) => {
   }, [activeText]);
 
   return (
-    <span>{textArray[activeText]}</span>
+    <span className={elClassName}>{textArray[activeText]}</span>
   );
 };
 
 Scrambler.propTypes = {
   text: PropTypes.string.isRequired,
+  elClassName: PropTypes.string.isRequired,
   obfuscator: PropTypes.string,
 };
 

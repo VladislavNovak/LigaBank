@@ -38,9 +38,6 @@ const Header = () => {
       <nav className="header__navigator">
         <ul className="header__navigator-list">
           <li className="header__navigator-item">
-            <Link to="#">Services</Link>
-          </li>
-          <li className="header__navigator-item">
             <Link to="#">Calculate a Loan</Link>
           </li>
           <li className="header__navigator-item">
@@ -52,8 +49,19 @@ const Header = () => {
               duration={500}
               to="Converter">Currency Converter</Link>
           </li>
+          <li className="header__navigator-item">
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              to="history">History</Link>
+          </li>
           <li className="header__navigator-item"><Link to="#">Contacts</Link></li>
-          <li className="header__navigator-item"><Link to="#">Ask a Question</Link></li>
+          <li className="header__navigator-item">
+            <Link to="#">Services</Link>
+          </li>
         </ul>
       </nav>
       <Link to="#" className="login">

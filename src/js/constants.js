@@ -1,5 +1,11 @@
 export const PATTERN = /^[-0-9.,]+$/;
-export const currencies = [`RUB`, `USD`, `EUR`, `GBP`];
+
+export const currencies = {
+  RUB: `₽`,
+  USD: `$`,
+  EUR: `€`,
+  GBP: `£`
+};
 
 export const money = {
   cash: {
