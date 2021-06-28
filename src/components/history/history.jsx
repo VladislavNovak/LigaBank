@@ -1,41 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCcPaypal} from '@fortawesome/free-brands-svg-icons';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faBackspace, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {faSave} from '@fortawesome/free-regular-svg-icons';
-import {Scrambler} from '..';
 import {money} from '../../js/constants';
+import HistoryItem from '../history-item/history-item';
 
 const History = ({history, onClickButtonReset}) => {
   return (
     <section className="history">
       <h2 className="history__title">Сonversion history</h2>
-      <ul className="history__list">
-        {
-          history.map(({selectedDate, firstCash, firstType, secondCash, secondType}) => (
-            <li
-              key={`${selectedDate}-${firstCash}-${firstType}-${secondCash}-${secondType}`}
-              className="history__item">
+      <ul className="history__list">{
+        history.map(({selectedDate, firstCash, firstType, secondCash, secondType}) => (
+          <HistoryItem
+            key={`${selectedDate}-${firstCash}-${firstType}-${secondCash}-${secondType}`}
+            selectedDate={selectedDate}
+            firstCash={firstCash}
+            firstType={firstType}
+            secondCash={secondCash}
+            secondType={secondType} />
+        ))
+      }</ul>
 
-              <Scrambler text={dayjs(selectedDate).format(`DD.MM.YYYY`)} elClassName="history__date" />
-              <div>
-                <Scrambler text={`${firstCash} ${firstType}`} elClassName="history__span" />
-                <span className="history__arrow">
-                  <svg width="41" height="18" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-arrow"></use></svg>
-                </span>
-                <Scrambler text={`${secondCash} ${secondType}`} elClassName="history__span" />
-              </div>
-            </li>
-          ))
-        }
-      </ul>
       <div className="history__actions">
         <button
           aria-label="paypal"
           onClick={onClickButtonReset}
-          className="history__paypal">{<FontAwesomeIcon icon={faCcPaypal} />}</button>
+          className="history__backspace">{<FontAwesomeIcon icon={faBackspace} />}</button>
         <button
           aria-label="save"
           onClick={onClickButtonReset}

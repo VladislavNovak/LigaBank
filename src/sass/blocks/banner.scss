@@ -50,16 +50,15 @@
 	color: $black1;
 	background-color: $white3;
 	border-radius: 4px;
+  transition-duration: 150ms;
 	&:hover {
 		color: $white3;
 		background-color: $blue1;
 		border: 1px solid $white3;
 		border-radius: 6px;
-		transition-duration: 150ms;
 	}
 	&:active {
 		opacity: 0.5;
-		transition-duration: 150ms;
 	}
 }
 

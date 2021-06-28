@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import dayjs from 'dayjs';
+import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
@@ -108,6 +109,13 @@ const Main = () => {
     }
 
     setHistory(prevHistory);
+
+    scroller.scrollTo(`Converter`, {
+      duration: 800,
+      delay: 0,
+      smooth: true,
+      offset: -100
+    });
   };
 
   return (
@@ -159,7 +167,9 @@ const Main = () => {
               selectedDate={currentAction[money.selectedDate]}
               handleAction={handleAction} />
 
-            <button className="sums__submit" type="submit">Сохранить результат</button>
+            <button
+              className="sums__submit"
+              type="submit">Add in history</button>
           </div>
         </form>
 

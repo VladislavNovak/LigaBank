@@ -1,9 +1,14 @@
 .footer {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 101px;
-	padding: 35px 80px 40px 80px;
-	background-color: $white3;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer__core {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px 40px 80px;
+  background-color: $blue1;
+
 }
 
 .footer__target {

@@ -55,7 +55,7 @@ const Header = () => {
               spy={true}
               smooth={true}
               offset={-70}
-              duration={500}
+              duration={700}
               to="history">History</Link>
           </li>
           <li className="header__navigator-item"><Link to="#">Contacts</Link></li>

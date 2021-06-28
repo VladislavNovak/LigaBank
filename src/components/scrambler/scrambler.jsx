@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const Scrambler = ({text, elClassName, obfuscator = `.....//\\||---&qWfD?#-&%L&56%$+&%4L9&%$`}) => {
+const Scrambler = ({text, elClassName, obfuscator = `.....//\\||---&qWfD?#-&L&56%$+&%4L9&$`}) => {
 
   const shuffle = (word) => [...word].sort(() => 0.5 - Math.random()).join(``);
 
@@ -30,8 +30,9 @@ const Scrambler = ({text, elClassName, obfuscator = `.....//\\||---&qWfD?#-&%L&5
 
   useEffect(() => {
     let interval = null;
+    setTimeout(() => {}, 2000);
     if (activeText < textArray.length - 1) {
-      interval = setInterval(() => setActiveText((prevState) => (prevState + 1)), 100);
+      interval = setInterval(() => setActiveText((prevState) => (prevState + 1)), 120);
     }
 
     return () => clearInterval(interval);
