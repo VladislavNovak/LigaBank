@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {RechartCustom} from '..';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBackspace, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {faSave} from '@fortawesome/free-regular-svg-icons';
 import {money} from '../../js/constants';
 import HistoryItem from '../history-item/history-item';
 
-const History = ({history, onClickButtonReset}) => {
+const History = ({history, handleAction, onClickBackspace, onClickReset}) => {
   return (
     <section className="history">
       <h2 className="history__title">Сonversion history</h2>
@@ -22,18 +23,23 @@ const History = ({history, onClickButtonReset}) => {
         ))
       }</ul>
 
+      <RechartCustom history={history} />
+
       <div className="history__actions">
         <button
-          aria-label="paypal"
-          onClick={onClickButtonReset}
+          aria-label="backspace"
+          name="backspace"
+          onClick={onClickBackspace}
           className="history__backspace">{<FontAwesomeIcon icon={faBackspace} />}</button>
         <button
           aria-label="save"
-          onClick={onClickButtonReset}
+          name="save"
+          onClick={({target}) => handleAction(target)}
           className="history__save">{<FontAwesomeIcon icon={faSave} />}</button>
         <button
           aria-label="reset"
-          onClick={onClickButtonReset}
+          name="reset"
+          onClick={onClickReset}
           className="history__reset">{<FontAwesomeIcon icon={faTrash} />}</button>
       </div>
     </section>
@@ -41,7 +47,9 @@ const History = ({history, onClickButtonReset}) => {
 };
 
 History.propTypes = {
-  onClickButtonReset: PropTypes.func,
+  handleAction: PropTypes.func,
+  onClickBackspace: PropTypes.func,
+  onClickReset: PropTypes.func,
   history: PropTypes.arrayOf(PropTypes.shape({
     [money.cash.FIRST]: PropTypes.number.isRequired,
     [money.type.FIRST]: PropTypes.string.isRequired,

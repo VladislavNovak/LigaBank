@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
-import {History, HistoryEmpty, CustomDatePicker, Organizer} from '..';
+import {History, HistoryEmpty, DatePickerCustom, Organizer} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
@@ -87,7 +87,16 @@ const Main = () => {
     }
   };
 
-  const handleCleareHistory = () => {
+  const handleClickBackspace = () => {
+    const prevHistory = [...history];
+    if (prevHistory.length) {
+      prevHistory.pop();
+    }
+
+    setHistory(prevHistory);
+  };
+
+  const handleClickReset = () => {
     setHistory([]);
   };
 
@@ -104,7 +113,7 @@ const Main = () => {
 
     const prevHistory = [...history];
     prevHistory.unshift(currentAction);
-    if (prevHistory.length > 10) {
+    if (prevHistory.length > 12) {
       prevHistory.pop();
     }
 
@@ -163,17 +172,21 @@ const Main = () => {
               typeValue={currentAction[money.type.SECOND]} />
           </div>
           <div className="sums__layout">
-            <CustomDatePicker
+            <DatePickerCustom
               selectedDate={currentAction[money.selectedDate]}
               handleAction={handleAction} />
 
             <button
               className="sums__submit"
-              type="submit">Add in history</button>
+              type="submit">Add to history</button>
           </div>
         </form>
 
-        {history.length ? <History history={history} onClickButtonReset={handleCleareHistory} /> : <HistoryEmpty />}
+        {history.length ? <History
+          history={history}
+          onClickBackspace={handleClickBackspace}
+          onClickReset={handleClickReset} /> : <HistoryEmpty />}
+
       </section>
     </main>
   );

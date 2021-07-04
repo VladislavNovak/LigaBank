@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import {Scrambler} from '..';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLongArrowAltRight} from '@fortawesome/free-solid-svg-icons';
-import {faCheckCircle} from '@fortawesome/free-regular-svg-icons';
+import {faLink, faLongArrowAltRight} from '@fortawesome/free-solid-svg-icons';
+import {faUncharted} from '@fortawesome/free-brands-svg-icons';
 
 const HistoryItem = ({selectedDate, firstCash, firstType, secondCash, secondType}) => {
-  // eslint-disable-next-line no-unused-vars
   const [isSelected, setIsSelected] = useState(false);
 
   const handleListitemClick = () => {
@@ -20,9 +19,11 @@ const HistoryItem = ({selectedDate, firstCash, firstType, secondCash, secondType
       onClick={handleListitemClick}
       className="history__item">
       <div className="history__sign">
-        {isSelected && <FontAwesomeIcon className="history__sign-icon" icon={faCheckCircle} />}
+        <FontAwesomeIcon
+          className={`history__sign-icon ${isSelected && `history__sign--active`}`}
+          icon={isSelected ? faLink : faUncharted} />
       </div>
-      <div className="history__field">
+      <div className={`history__field ${isSelected && `history__field--active`}`}>
         <p className="history__date">{dayjs(selectedDate).format(`DD.MM.YYYY`)}</p>
         <div className="history__second-line">
           <Scrambler text={`${firstCash} ${firstType}`} elClassName="history__span" />

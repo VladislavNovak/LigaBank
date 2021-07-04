@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Logo} from '..';
 
 const Footer = () => {
   return (
@@ -10,11 +11,8 @@ const Footer = () => {
       </div>
       <div className="footer__core">
         <div className="footer__target">
-          <Link className="logo" to="#" aria-label="Домашняя страница">
-            <svg className="icon-logo" width="30" height="27" fill="none"><use xlinkHref="./sprite/sprite.svg#icon-logo" /></svg>
-            <span>ЛИГА Банк</span>
-          </Link>
-          <p className="footer__location">150015, г. Москва, ул. Московская, д. 32 Генеральная лицензия Банка России №1050 <br />Ⓒ Лига Банк, 2019</p>
+          <Logo />
+          <p className="footer__location">James Kerry, 438 Dark Spurt, San Francisco, CA 94528, USA</p>
         </div>
         <nav>
           <ul className="footer__navigator">

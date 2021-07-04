@@ -7,7 +7,7 @@ import {faCalendarAlt} from '@fortawesome/free-regular-svg-icons';
 import dayjs from 'dayjs';
 
 
-const CustomDatePicker = ({selectedDate, handleAction}) => {
+const DatePickerCustom = ({selectedDate, handleAction}) => {
   return (
     <div className="datepicker">
       <label className="datepicker__label">
@@ -24,9 +24,9 @@ const CustomDatePicker = ({selectedDate, handleAction}) => {
   );
 };
 
-CustomDatePicker.propTypes = {
+DatePickerCustom.propTypes = {
   selectedDate: PropTypes.object.isRequired,
   handleAction: PropTypes.func.isRequired,
 };
 
-export default CustomDatePicker;
+export default DatePickerCustom;
