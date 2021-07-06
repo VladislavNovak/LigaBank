@@ -182,10 +182,11 @@ const Main = () => {
           </div>
         </form>
 
-        {history.length ? <History
-          history={history}
-          onClickBackspace={handleClickBackspace}
-          onClickReset={handleClickReset} /> : <HistoryEmpty />}
+        {history.length ?
+          <History
+            history={history}
+            onClickBackspace={handleClickBackspace}
+            onClickReset={handleClickReset} /> : <HistoryEmpty />}
 
       </section>
     </main>

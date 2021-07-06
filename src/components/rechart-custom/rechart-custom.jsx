@@ -53,12 +53,12 @@ const RechartCustom = ({history}) => {
       return total;
     }, 0);
 
-    setDimensionChart({width: (preparedArray.length < 5) ? 18 * preparedArray.length : 100, height: heightMax + 300});
+    setDimensionChart({width: (preparedArray.length < 7) ? 14 * preparedArray.length : 100, height: heightMax / 10 + 300});
   }, [history]);
 
   return (
     <div className="rechart">
-      <h1>Dynamics of expenditures</h1>
+      <h1 className="rechart__header">Dynamics of expenditures</h1>
 
       <ResponsiveContainer width={`${dimensionChart.width}%`} height={dimensionChart.height} className="rechartX">
         <BarChart
@@ -77,9 +77,9 @@ const RechartCustom = ({history}) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="USD" fill="#2E8B57" />
-          <Bar dataKey="GBP" fill="#CD5C5C" />
-          <Bar dataKey="EUR" fill="#8A2BE2" />
+          <Bar dataKey="USD" stackId="a" fill="#2E8B57" />
+          <Bar dataKey="GBP" stackId="a" fill="#CD5C5C" />
+          <Bar dataKey="EUR" stackId="a" fill="#8A2BE2" />
         </BarChart>
       </ResponsiveContainer>
     </div>

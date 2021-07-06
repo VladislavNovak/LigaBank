@@ -30,17 +30,17 @@ const History = ({history, handleAction, onClickBackspace, onClickReset}) => {
           aria-label="backspace"
           name="backspace"
           onClick={onClickBackspace}
-          className="history__backspace">{<FontAwesomeIcon icon={faBackspace} />}</button>
+          className="history__backspace"><FontAwesomeIcon icon={faBackspace} /></button>
         <button
           aria-label="save"
           name="save"
           onClick={({target}) => handleAction(target)}
-          className="history__save">{<FontAwesomeIcon icon={faSave} />}</button>
+          className="history__save"><FontAwesomeIcon icon={faSave} /></button>
         <button
           aria-label="reset"
           name="reset"
           onClick={onClickReset}
-          className="history__reset">{<FontAwesomeIcon icon={faTrash} />}</button>
+          className="history__reset"><FontAwesomeIcon icon={faTrash} /></button>
       </div>
     </section>
   );
