@@ -7,6 +7,7 @@ import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {History, HistoryEmpty, DatePickerCustom, Organizer} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
+import {faCog} from '@fortawesome/free-solid-svg-icons';
 
 const Main = () => {
   const resetState = (date = (new Date())) => ({
@@ -128,7 +129,7 @@ const Main = () => {
   };
 
   return (
-    <main>
+    <main className="main">
       <section className="banner">
         <h1 className="visually-hidden">Причины обратиться в Лига Банк:</h1>
         <div className="banner__loan">
@@ -146,40 +147,39 @@ const Main = () => {
         <h2 className="converter__title">Currency Converter</h2>
 
         <form className="sums">
-          <div className="sums__layout">
-            <Organizer
-              legend={`I have the amount`}
-              classElement={`organazer__cash`}
-              isCurrentActionValid={isCurrentActionValid}
-              cashName={money.cash.FIRST}
-              cashValue={currentAction[money.cash.FIRST]}
-              handleAction={handleAction}
-              handleBlurInput={handleBlurInput}
-              typeName={money.type.FIRST}
-              typeValue={currentAction[money.type.FIRST]} />
+          <DatePickerCustom
+            selectedDate={currentAction[money.selectedDate]}
+            handleAction={handleAction} />
+          <Organizer
+            legend={`I have the amount`}
+            classElement={`organazer__cash`}
+            isCurrentActionValid={isCurrentActionValid}
+            cashName={money.cash.FIRST}
+            cashValue={currentAction[money.cash.FIRST]}
+            handleAction={handleAction}
+            handleBlurInput={handleBlurInput}
+            typeName={money.type.FIRST}
+            typeValue={currentAction[money.type.FIRST]} />
 
-            <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
+          <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
 
-            <Organizer
-              legend={`I want to buy`}
-              classElement={`organazer__exchanged`}
-              isCurrentActionValid={isCurrentActionValid}
-              cashName={money.cash.SECOND}
-              cashValue={currentAction[money.cash.SECOND]}
-              handleAction={handleAction}
-              handleBlurInput={handleBlurInput}
-              typeName={money.type.SECOND}
-              typeValue={currentAction[money.type.SECOND]} />
-          </div>
-          <div className="sums__layout">
-            <DatePickerCustom
-              selectedDate={currentAction[money.selectedDate]}
-              handleAction={handleAction} />
+          <Organizer
+            legend={`I want to buy`}
+            classElement={`organazer__exchanged`}
+            isCurrentActionValid={isCurrentActionValid}
+            cashName={money.cash.SECOND}
+            cashValue={currentAction[money.cash.SECOND]}
+            handleAction={handleAction}
+            handleBlurInput={handleBlurInput}
+            typeName={money.type.SECOND}
+            typeValue={currentAction[money.type.SECOND]} />
 
-            <button
-              className="sums__submit"
-              type="submit">Add to history</button>
-          </div>
+          <button
+            className="sums__submit"
+            type="submit">
+            <span>Add</span>
+            <FontAwesomeIcon icon={faCog} className="sums__submit-icon" />
+          </button>
         </form>
 
         {history.length ?

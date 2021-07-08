@@ -9,5 +9,6 @@ export {default as HistoryItem} from './history-item/history-item.jsx';
 export {default as HistoryEmpty} from './history-empty/history-empty.jsx';
 export {default as Scrambler} from './scrambler/scrambler.jsx';
 export {default as Slider} from './slider/slider.jsx';
+export {default as About} from './about/about.jsx';
 export {default as RechartCustom} from './rechart-custom/rechart-custom';
 export {default as Footer} from './footer/footer.jsx';

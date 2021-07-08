@@ -2,9 +2,10 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	width: 525px;
-	margin: 10px;
+	width: 450px;
+	margin: 5px;
 	color: $black1;
+
 	label {
 		width: 100%;
 		margin-bottom: 10px;
@@ -12,8 +13,9 @@
 		font-size: 22px;
 		line-height: 31px;
 	}
+
 	select {
-		width: 120px;
+		width: 110px;
 		min-height: 50px;
 		font-weight: 400;
 		font-size: 25px;
@@ -26,7 +28,7 @@
 }
 
 .organizer__input {
-	width: 384px;
+	width: 240px;
 	min-height: 50px;
 	font-weight: 500;
 	font-size: 24px;
