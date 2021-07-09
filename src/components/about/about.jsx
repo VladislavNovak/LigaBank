@@ -1,30 +1,38 @@
-import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faAddressBook, faAt, faBars, faCat, faCodeBranch, faCog, faHome, faTimes, faUserPlus} from '@fortawesome/free-solid-svg-icons';
-import {faEdit} from '@fortawesome/free-regular-svg-icons';
+import React from 'react';
+// import React, {useState} from 'react';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import {faAddressBook, faAt, faBars, faCat, faCodeBranch, faCog, faHome, faTimes, faUserPlus} from '@fortawesome/free-solid-svg-icons';
+// import {faEdit} from '@fortawesome/free-regular-svg-icons';
 
 const About = () => {
-  const [activeMenu, setActiveMenu] = useState(false);
+  // const [activeMenu, setActiveMenu] = useState(false);
 
-  const handleMenuClick = () => {
-    setActiveMenu((prevState) => !prevState);
-  };
+  // const handleMenuClick = () => {
+  //   setActiveMenu((prevState) => !prevState);
+  // };
 
   return (
-    <div className="about__container">
-      <div className="about__top">
-        <div className="about__page">
-          <h1>About developer</h1>
-          <p>You can select my work in the menu</p>
+    <div className="about">
+      <div className="about__container">
+        <div className="about__title">
+          <h2 className="about__text-first">Novaldix</h2>
+          <h2 className="about__text-second">Novaldix</h2>
+          {/* <h2 className="about__text-first">Animated</h2>
+          <h2 className="about__text-second">Animated</h2> */}
+        </div>
+        <div className="about__portrait">
+          <img
+            className="about__portrait-photo"
+            src="https://sun9-3.userapi.com/impf/c6094/v6094857/1272/8uaAeZ933ns.jpg?size=2560x1920&quality=96&sign=8806b17960483f32924ded8ab20bbef8&type=album" alt="" />
         </div>
       </div>
 
-      <div className={`about__menu ${activeMenu && `about__menu--disactive`}`}>
-        <button
-          className="about__top-button"
+      {/* <div className={`about__menu ${activeMenu && `about__menu--disactive`}`}>
+        <div
+          className="about__menu-button"
           onClick={handleMenuClick}>
           <FontAwesomeIcon icon={activeMenu ? faBars : faTimes} />
-        </button>
+        </div>
         <ul className="about__menu-list">
           <li className="about__menu-option">
             <div><FontAwesomeIcon icon={faHome} className="menu__icon" /></div>
@@ -59,7 +67,7 @@ const About = () => {
             <div className="about__menu-title">Edit</div>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

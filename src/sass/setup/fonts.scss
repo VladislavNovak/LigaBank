@@ -63,6 +63,16 @@
        url('../../fonts/LondrinaOutline-Regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('../../fonts/LondrinaOutline-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
 }
+/* londrina-solid-regular - latin */
+@font-face {
+  font-family: 'LondrinaSolid';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(''),
+       url('../../fonts/LondrinaSolid-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../fonts/LondrinaSolid-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+}
 /* oswald-500 - latin_cyrillic */
 @font-face {
   font-family: 'Oswald';
