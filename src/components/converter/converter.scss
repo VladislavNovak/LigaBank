@@ -1,10 +1,25 @@
-.sums {
+.converter__wrapper {
+	padding: 0 60px;
+}
+
+.converter__title {
+	font-weight: 600;
+	font-size: 38px;
+	line-height: 45px;
+  text-align: center;
+	margin: 46px 10px 5px 10px;
+	color: $black1;
+}
+
+.converter {
 	display: flex;
   align-items: flex-end;
   margin-bottom: 20px;
+
+  border: black 1 px solid;
 }
 
-.sums__submit {
+.converter__submit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +46,7 @@
 	}
 }
 
-.sums__submit-icon {
+.converter__submit-icon {
   font-size: 33px;
   padding-left: 10px;
 }

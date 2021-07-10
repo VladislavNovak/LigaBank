@@ -17,8 +17,6 @@ const About = () => {
         <div className="about__title">
           <h2 className="about__text-first">Novaldix</h2>
           <h2 className="about__text-second">Novaldix</h2>
-          {/* <h2 className="about__text-first">Animated</h2>
-          <h2 className="about__text-second">Animated</h2> */}
         </div>
         <div className="about__portrait">
           <img
