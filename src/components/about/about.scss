@@ -15,16 +15,18 @@
 
   border: $lightCyan 1px solid;
   border-radius: 5px;
-  background: linear-gradient(-65deg, $blue2 60%, $lightCyan 60%, $blue4 95%);
-  background-size: 190%;
-  transition: all 0.6s;
+  background: linear-gradient(-66.001deg, $blue2 60%, $lightCyan 60%, $blue4 95%);
+  background-size: 210%;
+  transition: all 0.4s linear;
 
   &:hover {
-    background-position: -500px;
+    background-position: -580px;
+    box-shadow:5px 5px 25px rgba(0,0,0, .5);
+    transform: translate(-3px, -3px);
   }
 
   &:hover .about__portrait {
-    left: 4%;
+    left: 2%;
   }
 }
 
@@ -32,44 +34,75 @@
   position: absolute;
   overflow: hidden;
   top: 29px;
-  left: 67%;
+  left: 75%;
   width: 130px;
   height: 130px;
   border-radius: 50%;
   border: $blue2 6px solid;
-  background-color: $lightCyan;
-  transition: all 0.6s;
+  background-color: $blue2;
+  transition: all 0.4s linear;
 
   &-photo {
     position: absolute;
-    left: -59px;
-    top: -19px;
-    width: 280px;
+    left: -2px;
+    top: -8px;
+    width: 132px;
+    background-color: $blue2;
+  }
+
+  &-photo2 {
+    position: absolute;
+    left: -2px;
+    top: -8px;
+    width: 132px;
+    background-color: $blue2;
+    animation: photoGlitch 2.3s -.8s infinite linear alternate;
   }
 }
 
 .about__title {
   position: relative;
-  font-family: 'LondrinaOutline', sans-serif;
   user-select: none;
-  width: 71%;
+  width: 632px;
   text-align: center;
   font-weight: 700;
   font-size: 55px;
   line-height: 55px;
   color: $blue2;
+
+  &-first {
+    font-family: 'LondrinaOutline', sans-serif;
   }
 
-.about__text-second {
-  position: absolute;
-  left: 156px;
-  font-family: 'LondrinaSolid', sans-serif;
-  top: -68px;
-  color: $blue2;
-  animation: animate 4s ease-in-out infinite;
+  &-second {
+    position: absolute;
+    left: 74px;
+    top: -68px;
+
+    font-family: 'LondrinaSolid', sans-serif;
+    animation: textWave 4s ease-in-out infinite;
+  }
 }
 
-@keyframes animate
+@keyframes photoGlitch
+{
+	0% {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+	50% {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}
+	55% {
+    clip-path: polygon(0 3%, 100% 3%, 100% 3%, 0 3%);
+  }
+	60% {clip-path: polygon(0 8%, 100% 8%, 100% 20%, 0 20%); transform: translateX(1%);}
+	65% {clip-path: polygon(0 20%, 100% 20%, 100% 20%, 0 20%); transform: translateX(1%);}
+	75% {clip-path: polygon(0 45%, 100% 45%, 100% 45%, 0 45%); transform: translateX(1%);}
+	80% {clip-path: polygon(0 50%, 100% 50%, 100% 57%, 0 57%); transform: translateX(1%);}
+	85% {clip-path: polygon(0 60%, 100% 60%, 100% 60%, 0 60%); transform: translateX(1%);}
+	90% {clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%); transform: translateX(1%);}
+	95% {clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); transform: translateX(1%);}
+	98% {clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%); transform: translateX(3%);}
+	100% {clip-path: polygon(0 11%, 100% 11%, 100% 15%, 0 15%); transform: scale(2, 0.5);}
+}
+
+@keyframes textWave
 {
   0%, 100%
   {
@@ -80,58 +113,3 @@
     clip-path: polygon(0 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 40%, 100% 100%, 0% 100%)
   }
 }
-
-
-
-// .about__top {
-//   background-color: $blue1;
-//   text-align: center;
-//   margin-top: 2px;
-// }
-
-
-// .about__page {
-//   padding: 20px 0 100px 0;
-//   color: white;
-// }
-
-// .about__menu {
-//   position: absolute;
-//   bottom: 0;
-
-//   display: flex;
-//   justify-content: center;
-//   width: 100%;
-
-//   background-color: $blue2;
-//   color: white;
-//   border-top: #191970 2px solid;
-
-//   &--disactive {
-//     bottom: -20px;
-//   }
-// }
-
-// .about__menu-list {
-//   display: flex;
-//   list-style-type: none;
-//   padding-left: 0;
-// }
-
-// .about__menu-button {
-//   position: absolute;
-//   left: 50%;
-//   top: -17px;
-
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: center;
-
-//   width: 30px;
-//   height: 30px;
-//   background-color: $blue2;
-//   color: white;
-
-//   border: #191970 2px solid;
-//   border-radius: 50%;
-// }

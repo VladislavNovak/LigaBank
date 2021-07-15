@@ -25,7 +25,7 @@
 	margin-top: 35px;
 	margin-bottom: 10px;
 	padding-left: 14px;
-	color: $white3;
+	color: $lightCyan1;
 }
 
 .banner__propose {
@@ -35,7 +35,7 @@
 	margin-top: 13px;
 	margin-bottom: 13px;
 	padding-left: 10px;
-	color: $white4;
+	color: $lightCyan1;
 }
 
 .banner__redirect {
@@ -48,14 +48,14 @@
 	line-height: 21px;
 	text-decoration: none;
 	color: $black1;
-	background-color: $white3;
-	border-radius: 4px;
+	background-color: $lightCyan1;
+	border-radius: 8px;
   transition-duration: 150ms;
 	&:hover {
 		color: $white3;
 		background-color: $blue1;
 		border: 1px solid $white3;
-		border-radius: 6px;
+		// border-radius: 6px;
 	}
 	&:active {
 		opacity: 0.5;

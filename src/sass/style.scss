@@ -8,6 +8,7 @@
 @import "./blocks/body.scss";
 @import "../components/converter/converter.scss";
 @import "../components/date-picker-custom/datepicker-custom.scss";
+@import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';
 @import "../components/footer/footer.scss";
 @import "../components/header/header.scss";
 @import "../components/history/history.scss";
@@ -15,6 +16,6 @@
 @import "../components/logo/logo.scss";
 @import "../components/organizer/organizer.scss";
 @import "./blocks/ocean.scss";
-@import "../components/rechart-custom/rechart.scss";
+@import "../components/rechart-bar/rechart-bar.scss";
+@import "../components/rechart-pie/rechart-pie.scss";
 @import "./blocks/slider.scss";
-@import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';

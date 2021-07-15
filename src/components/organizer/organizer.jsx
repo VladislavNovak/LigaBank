@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSortDown} from '@fortawesome/free-solid-svg-icons';
 
 import {currencies} from '../../js/constants';
 
@@ -19,15 +21,18 @@ const Organizer = ({legend, classElement, isCurrentActionValid, cashName, cashVa
         onInput={({target}) => handleAction(target)}
         onBlur={handleBlurInput}
         required />
-      <select
-        className={`${classElement}-type`}
-        name={typeName}
-        value={typeValue}
-        onChange={({target}) => handleAction(target)} >
-        {Object.entries(currencies).map(([name, value]) => (
-          <option key={name} value={name}>{name} {value}</option>
-        ))}
-      </select>
+      <div className="organizer__select">
+        <FontAwesomeIcon icon={faSortDown} className="organizer__select-icon" />
+        <select
+          className="organizer__select-core"
+          name={typeName}
+          value={typeValue}
+          onChange={({target}) => handleAction(target)} >
+          {Object.entries(currencies).map(([name, value]) => (
+            <option key={name} value={name}>{value}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

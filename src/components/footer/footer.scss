@@ -40,6 +40,11 @@
   text-decoration: none;
   transition: all 0.4s ease;
 
+  &:hover {
+    box-shadow:5px 5px 25px rgba(0,0,0, .5);
+    transform: translate(-2px, -2px);
+  }
+
   &:nth-child(1){
     background: #4267B2;
   }

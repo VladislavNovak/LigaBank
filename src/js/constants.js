@@ -18,3 +18,9 @@ export const money = {
   },
   selectedDate: `selectedDate`
 };
+
+export const RechartsColor = {
+  USD: `#0088FE`,
+  GBP: `#b22222`,
+  EUR: `#FF8042`,
+};

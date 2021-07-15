@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {money} from '../../js/constants';
+import {money, RechartsColor} from '../../js/constants';
 import dayjs from 'dayjs';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 
-const RechartCustom = ({history}) => {
-  // eslint-disable-next-line no-unused-vars
+const RechartBar = ({history}) => {
   const [dataForChart, setDataForChart] = useState([]);
   const [dimensionChart, setDimensionChart] = useState({});
 
@@ -35,31 +34,16 @@ const RechartCustom = ({history}) => {
       });
 
       total.push({...temp, date: key});
-      // total[key] = temp;
       return total;
     }, []);
 
     setDataForChart(preparedArray);
 
-    const heightMax = preparedArray.reduce((total, item) => {
-      for (let key in item) {
-        if (key !== `data` && key !== `RUB`) {
-          if (total < item[key]) {
-            total = item[key];
-          }
-        }
-      }
-
-      return total;
-    }, 0);
-
-    setDimensionChart({width: (preparedArray.length < 7) ? 14 * preparedArray.length : 100, height: heightMax / 10 + 300});
+    setDimensionChart({width: 22 * (preparedArray.length + 1) - ((1 + (preparedArray.length + 1)) * (preparedArray.length + 1)), height: 400});
   }, [history]);
 
   return (
-    <div className="rechart">
-      <h1 className="rechart__header">Dynamics of expenditures</h1>
-
+    <div className="rechart__bar history__block-style">
       <ResponsiveContainer width={`${dimensionChart.width}%`} height={dimensionChart.height} className="rechartX">
         <BarChart
           width={300}
@@ -77,19 +61,16 @@ const RechartCustom = ({history}) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="USD" stackId="a" fill="#2E8B57" />
-          <Bar dataKey="GBP" stackId="a" fill="#CD5C5C" />
-          <Bar dataKey="EUR" stackId="a" fill="#8A2BE2" />
+          <Bar dataKey="USD" fill={RechartsColor.USD} />
+          <Bar dataKey="GBP" fill={RechartsColor.GBP} />
+          <Bar dataKey="EUR" fill={RechartsColor.EUR} />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-RechartCustom.propTypes = {
-  // handleAction: PropTypes.func,
-  // onClickBackspace: PropTypes.func,
-  // onClickReset: PropTypes.func,
+RechartBar.propTypes = {
   history: PropTypes.arrayOf(PropTypes.shape({
     [money.cash.FIRST]: PropTypes.number.isRequired,
     [money.type.FIRST]: PropTypes.string.isRequired,
@@ -99,4 +80,4 @@ RechartCustom.propTypes = {
   }))
 };
 
-export default RechartCustom;
+export default RechartBar;

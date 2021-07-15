@@ -15,13 +15,16 @@ const About = () => {
     <div className="about">
       <div className="about__container">
         <div className="about__title">
-          <h2 className="about__text-first">Novaldix</h2>
-          <h2 className="about__text-second">Novaldix</h2>
+          <h2 className="about__title-first">Based on React</h2>
+          <h2 className="about__title-second">Based on React</h2>
         </div>
         <div className="about__portrait">
           <img
             className="about__portrait-photo"
-            src="https://sun9-3.userapi.com/impf/c6094/v6094857/1272/8uaAeZ933ns.jpg?size=2560x1920&quality=96&sign=8806b17960483f32924ded8ab20bbef8&type=album" alt="" />
+            src="https://sun9-66.userapi.com/impg/sgC6pzDG3uJpeenw55L0mOJzieDmw14U8U1bgg/Nhvv8dLpamY.jpg?size=965x1208&quality=96&sign=2b477effc429b61735d6fcddd487f071&type=album" alt="" />
+          <img
+            className="about__portrait-photo2"
+            src="https://sun9-66.userapi.com/impg/sgC6pzDG3uJpeenw55L0mOJzieDmw14U8U1bgg/Nhvv8dLpamY.jpg?size=965x1208&quality=96&sign=2b477effc429b61735d6fcddd487f071&type=album" alt="" />
         </div>
       </div>
 

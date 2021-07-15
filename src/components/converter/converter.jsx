@@ -3,10 +3,10 @@ import dayjs from 'dayjs';
 import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
-import {History, HistoryEmpty, DatePickerCustom, Organizer} from '..';
+import {faCog} from '@fortawesome/free-solid-svg-icons';
+import {History, DatePickerCustom, Organizer} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
-import {faCog} from '@fortawesome/free-solid-svg-icons';
 
 const Converter = () => {
   const resetState = (date = (new Date())) => ({
@@ -14,7 +14,8 @@ const Converter = () => {
     [money.type.FIRST]: `USD`,
     [money.cash.SECOND]: 0,
     [money.type.SECOND]: `RUB`,
-    [money.selectedDate]: date
+    [money.selectedDate]: date,
+    status: false
   });
 
   useEffect(getCurrencies, []);
@@ -40,7 +41,7 @@ const Converter = () => {
     const rur = cash / otherFactor;
     const converted = Math.floor(rur * selfFactor * 100) / 100;
 
-    setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted});
+    setCurrentAction({...currentAction, [`${inputName}`]: cash, [`${otherCash}`]: converted, status: false});
   };
 
   const changeCashByType = (selectName, value, cash) => {
@@ -50,7 +51,7 @@ const Converter = () => {
     const rur = currentAction[cash] / nextFactor;
     const converted = Math.floor(rur * prevFactor * 100) / 100;
 
-    setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted});
+    setCurrentAction({...currentAction, [`${selectName}`]: value, [`${cash}`]: converted, status: false});
   };
 
   const changeCashByDate = (date) => {
@@ -127,54 +128,63 @@ const Converter = () => {
     });
   };
 
+  const onListItemClick = ({id, status}) => {
+    const prevHistory = [...history];
+    prevHistory[id].status = status;
+    setHistory(prevHistory);
+  };
+
   return (
     <section
       id="Converter"
       className="converter__wrapper">
-      <h2 className="converter__title">Currency Converter</h2>
+      <h2 className="visually-hidden">Calculator</h2>
 
       <form className="converter" onSubmit={handleSubmit}>
-        <DatePickerCustom
-          selectedDate={currentAction[money.selectedDate]}
-          handleAction={handleAction} />
-        <Organizer
-          legend={`I have the amount`}
-          classElement={`organazer__cash`}
-          isCurrentActionValid={isCurrentActionValid}
-          cashName={money.cash.FIRST}
-          cashValue={currentAction[money.cash.FIRST]}
-          handleAction={handleAction}
-          handleBlurInput={handleBlurInput}
-          typeName={money.type.FIRST}
-          typeValue={currentAction[money.type.FIRST]} />
+        <h3 className="converter__title">Currency Converter</h3>
+        <div className="converter__form">
+          <DatePickerCustom
+            selectedDate={currentAction[money.selectedDate]}
+            handleAction={handleAction} />
 
-        <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
+          <Organizer
+            legend={`I have the amount`}
+            classElement={`organazer__cash`}
+            isCurrentActionValid={isCurrentActionValid}
+            cashName={money.cash.FIRST}
+            cashValue={currentAction[money.cash.FIRST]}
+            handleAction={handleAction}
+            handleBlurInput={handleBlurInput}
+            typeName={money.type.FIRST}
+            typeValue={currentAction[money.type.FIRST]} />
 
-        <Organizer
-          legend={`I want to buy`}
-          classElement={`organazer__exchanged`}
-          isCurrentActionValid={isCurrentActionValid}
-          cashName={money.cash.SECOND}
-          cashValue={currentAction[money.cash.SECOND]}
-          handleAction={handleAction}
-          handleBlurInput={handleBlurInput}
-          typeName={money.type.SECOND}
-          typeValue={currentAction[money.type.SECOND]} />
+          <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
 
-        <button
-          className="converter__submit"
-          type="submit">
-          <span>Add</span>
-          <FontAwesomeIcon icon={faCog} className="converter__submit-icon" />
-        </button>
+          <Organizer
+            legend={`I want to buy`}
+            classElement={`organazer__exchanged`}
+            isCurrentActionValid={isCurrentActionValid}
+            cashName={money.cash.SECOND}
+            cashValue={currentAction[money.cash.SECOND]}
+            handleAction={handleAction}
+            handleBlurInput={handleBlurInput}
+            typeName={money.type.SECOND}
+            typeValue={currentAction[money.type.SECOND]} />
+
+          <button
+            className="converter__submit"
+            type="submit">
+            <span>Add</span>
+            <FontAwesomeIcon icon={faCog} className="converter__submit-icon" />
+          </button>
+        </div>
       </form>
 
-      {history.length ?
-        <History
-          history={history}
-          onClickBackspace={handleClickBackspace}
-          onClickReset={handleClickReset} /> : <HistoryEmpty />}
-
+      <History
+        history={history}
+        onClickBackspace={handleClickBackspace}
+        onClickReset={handleClickReset}
+        onListItemClick={onListItemClick} />
     </section>
   );
 };
