@@ -22,14 +22,21 @@ const Converter = () => {
 
   const [currentAction, setCurrentAction] = useState(resetState());
   const [direction, setDirection] = useState(`arrows`);
-
   const [history, setHistory] = useState([]);
-
   const [isCurrentActionValid, setCurrentActionValid] = useState(true);
+  const [isInputFocusStatus, setInputFocusStatus] = useState(false);
+
+  const handleLabelFocus = () => {
+    setInputFocusStatus(true);
+  };
 
   const handleBlurInput = ({target}) => {
     if (PATTERN.exec(target.value)) {
       target.value = parseFloat(target.value.replace(/,/g, `.`));
+    }
+
+    if (!currentAction[money.cash.FIRST] || !currentAction[money.cash.SECOND]) {
+      setInputFocusStatus(false);
     }
   };
 
@@ -135,14 +142,11 @@ const Converter = () => {
   };
 
   return (
-    <section
-      id="Converter"
-      className="converter__wrapper">
+    <section id="Converter" className="converter">
       <h2 className="visually-hidden">Calculator</h2>
-
-      <form className="converter" onSubmit={handleSubmit}>
+      <form className="converter__form" onSubmit={handleSubmit}>
         <h3 className="converter__title">Currency Converter</h3>
-        <div className="converter__form">
+        <div className="converter__wrapper block-style">
           <DatePickerCustom
             selectedDate={currentAction[money.selectedDate]}
             handleAction={handleAction} />
@@ -154,9 +158,11 @@ const Converter = () => {
             cashName={money.cash.FIRST}
             cashValue={currentAction[money.cash.FIRST]}
             handleAction={handleAction}
+            handleLabelFocus={handleLabelFocus}
             handleBlurInput={handleBlurInput}
             typeName={money.type.FIRST}
-            typeValue={currentAction[money.type.FIRST]} />
+            typeValue={currentAction[money.type.FIRST]}
+            isInputFocusStatus={isInputFocusStatus} />
 
           <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
 
@@ -167,9 +173,11 @@ const Converter = () => {
             cashName={money.cash.SECOND}
             cashValue={currentAction[money.cash.SECOND]}
             handleAction={handleAction}
+            handleLabelFocus={handleLabelFocus}
             handleBlurInput={handleBlurInput}
             typeName={money.type.SECOND}
-            typeValue={currentAction[money.type.SECOND]} />
+            typeValue={currentAction[money.type.SECOND]}
+            isInputFocusStatus={isInputFocusStatus} />
 
           <button
             className="converter__submit"

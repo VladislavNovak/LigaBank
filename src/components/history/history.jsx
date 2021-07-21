@@ -16,7 +16,7 @@ const History = ({history, handleAction, onClickBackspace, onClickReset, onListI
             <React.Fragment>
               <h2 className="history__title">Сonversion history</h2>
               <div className="history__line">
-                <ul className="history__list history__block-style">{
+                <ul className="history__list block-style">{
                   history.map(({selectedDate, firstCash, firstType, secondCash, secondType, status}, index) => (
                     <HistoryItem
                       key={`${selectedDate}-${firstCash}-${firstType}-${secondCash}-${secondType}`}
@@ -31,7 +31,7 @@ const History = ({history, handleAction, onClickBackspace, onClickReset, onListI
                   ))
                 }</ul>
 
-                <div className="history__actions history__block-style">
+                <div className="history__actions block-style">
                   <button
                     aria-label="backspace"
                     name="backspace"

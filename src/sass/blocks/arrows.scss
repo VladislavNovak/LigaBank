@@ -1,8 +1,10 @@
 .arrows {
   font-size: 38px;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
   margin-top: auto;
+  color: $violet;
   transition-duration: 300ms;
+
   &--left {
     transform: rotate(180deg)
   }

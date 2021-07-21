@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {money} from '../../js/constants';
+import {RADIAN, money, RechartsColor} from '../../js/constants';
 import {PieChart, Pie, Cell, ResponsiveContainer} from 'recharts';
 
 const RechartPie = ({history}) => {
   const [dataForChart, setDataForChart] = useState([]);
 
   useEffect(() => {
-    const rawAssembly = history.reduce((total, {firstType, firstCash, status}) => {
-      if (status) {
-        total[firstType] += firstCash;
-      }
+    const filteredArray = history.filter(({status}) => status);
+
+    const rawAssembly = filteredArray.reduce((total, {firstType, firstCash}) => {
+      total[firstType] = total.hasOwnProperty(firstType) ? total[firstType] + firstCash : firstCash;
+
       return total;
-    }, {USD: 0, EUR: 0, GBP: 0});
+    }, {});
 
     const preparedArray = Object.entries(rawAssembly).reduce((total, [key, values]) => {
       total.push({type: key, value: values});
@@ -22,16 +23,6 @@ const RechartPie = ({history}) => {
     setDataForChart(preparedArray);
   }, [history]);
 
-  // const data = [
-  //   {name: `Group A`, value: 400},
-  //   {name: `Group B`, value: 300},
-  //   {name: `Group C`, value: 300},
-  //   {name: `Group D`, value: 200},
-  // ];
-
-  const COLORS = [`#0088FE`, `#00C49F`, `#FFBB28`];
-
-  const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent}) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -45,7 +36,7 @@ const RechartPie = ({history}) => {
   };
 
   return (
-    <div className="rechart__pie history__block-style">
+    <div className="rechart__pie block-style">
       {/* {
         dataForChart[0].value || dataForChart[1].value || dataForChart[2].value ? console.log(`YES: `) : console.log(`NO`)
       } */}
@@ -60,8 +51,8 @@ const RechartPie = ({history}) => {
             outerRadius={80}
             fill="#8884d8"
             dataKey="value" >
-            {dataForChart.map((_, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            {dataForChart.map((item, index) => (
+              <Cell key={`cell-${index}`} fill={RechartsColor[item.type]} />
             ))}
           </Pie>
         </PieChart>

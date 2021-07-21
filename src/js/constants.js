@@ -1,4 +1,5 @@
 export const PATTERN = /^[-0-9.,]+$/;
+export const RADIAN = Math.PI / 180;
 
 export const currencies = {
   RUB: `₽`,

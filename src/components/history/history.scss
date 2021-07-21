@@ -1,11 +1,12 @@
 .history {
   display: flex;
   flex-direction: column;
-	padding: 15px 30px;
+	padding: 10px 30px;
 
-  border: 2px $blue1 solid;
-	border-radius: 12px;
-  background: linear-gradient(0deg, rgb(16, 2, 240), rgb(27, 101, 219));
+  // border: 2px $blue3 solid;
+	// border-radius: 12px;
+  // background-color: rgb(27, 126, 219);
+
   min-height: 56px;
   transition-duration: 700ms;
 }
@@ -17,23 +18,20 @@
 .history__notice {
   font-weight: 500;
   font-size: 22px;
-  line-height: 35px;
+  line-height: 26px;
   text-align: center;
 
-  color: white;
+  color: $lightCyan1;
 }
 
 .history__title {
-	margin: 0;
+  margin: 10px 0 15px 0;
 
 	font-weight: 600;
-	font-size: 38px;
-	line-height: 60px;
+	font-size: 30px;
+	line-height: 40px;
   text-align: center;
-
-  -webkit-text-stroke: 1px $blue1;
-  text-transform: uppercase;
-  border-radius: 10px;
+  letter-spacing: 3px;
 
   color: $lightCyan1;
 }
@@ -41,13 +39,6 @@
 .history__line {
   display: flex;
   margin: 5px 0;
-}
-
-.history__block-style {
-  border: 2px $blue1 solid;
-  border-radius: 10px;
-  background-color: $lightCyan1;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .history__list {
@@ -65,11 +56,6 @@
   font-family: 'PT Mono';
 
   transition: all 0.2s linear;
-
-  &:hover {
-    box-shadow:5px 5px 25px rgba(0,0,0, .5);
-    transform: translate(-2px, -2px);
-  }
 }
 
 .history__item {
@@ -164,11 +150,6 @@
 
   transition: all 0.2s linear;
 
-  &:hover {
-    box-shadow:5px 5px 25px rgba(0,0,0, .5);
-    transform: translate(-2px, -2px);
-  }
-
   button {
     width: 54px;
     min-height: 50px;
@@ -197,15 +178,6 @@
  * ----------------------------------------
  */
 
-@keyframes wave {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: -1600px;
-  }
-}
-
 @keyframes swell {
   0%, 100% {
     transform: translate3d(0,-25px,0);
@@ -215,7 +187,7 @@
   }
 }
 
- @keyframes text-focus-in {
+@keyframes text-focus-in {
   0% {
     filter: blur(12px);
     opacity: 0;
@@ -226,7 +198,7 @@
   }
 }
 
- @keyframes fade-in {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }

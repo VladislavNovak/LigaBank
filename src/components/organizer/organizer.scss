@@ -1,18 +1,32 @@
 .organizer {
+  position: relative;
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	width: 275px;
+	width: 280px;
 	margin: 5px;
-	color: $black1;
+	color: $violet;
+}
 
-	label {
-		width: 100%;
-		margin-bottom: 10px;
-		font-weight: 500;
-		font-size: 22px;
-		line-height: 31px;
-	}
+.organizer__label {
+  position: absolute;
+  left: 15px;
+  // top: -1px;
+  margin: 9px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+
+  transition: .1s ease-in-out;
+
+  &--active {
+    font-size: 27px;
+
+    left: 4px;
+    top: 2px;
+    border-radius: 5px;
+  }
 }
 
 .organizer__select {
@@ -24,41 +38,45 @@
     right: 8px;
     font-size: 29px;
     pointer-events: none;
-    color: $blue1;
+    color: $violet;
+  }
+
+  &-core {
+    width: 50px;
+    min-height: 51px;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 42px;
+
+    text-align-last: left;
+    padding-left: 6px;
+    border: 1px solid $violet;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 }
 
-.organizer__select-core {
-  width: 50px;
-  min-height: 49px;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 42px;
-
-  text-align-last: left;
-  padding-left: 6px;
-  border: 1px solid $black1;
-  border-radius: 10px;
-  outline: none;
-  cursor: pointer;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 .organizer__input {
-	width: 210px;
-	min-height: 45px;
+	width: 180px;
+  padding: 10px 0 5px 45px;
 	font-weight: 500;
 	font-size: 24px;
 	line-height: 34px;
 	text-align: center;
-	border: 1px solid $black1;
-	border-radius: 10px;
+	border: 1px solid $violet;
+	border-radius: 6px;
   outline: none;
-}
 
-.organizer__input--error {
-	box-shadow: 0 0 3px 2px $red;
+  &:focus {
+    outline: none;
+  }
+
+  &--error {
+    box-shadow: 0 0 3px 2px $red;
+  }
 }

@@ -43,7 +43,7 @@ const RechartBar = ({history}) => {
   }, [history]);
 
   return (
-    <div className="rechart__bar history__block-style">
+    <div className="rechart__bar block-style">
       <ResponsiveContainer width={`${dimensionChart.width}%`} height={dimensionChart.height} className="rechartX">
         <BarChart
           width={300}
