@@ -1,9 +1,65 @@
 .rechart__bar {
+  position: relative;
+  width: 760px;
+  height: 528px;
+
   display: flex;
   justify-content: center;
-  flex: 4;
-  margin: 0 10px 0 0;
-  padding: 15px 15px 15px 15px;
+
+  margin: 10px 5px 20px 20px;
+  padding: 10px 10px 10px 10px;
+
+  border-radius: 0 10px 10px 10px;
+  background-color: $blue1;
 
   transition: all 0.2s linear;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, .5);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 598px;
+    width: 80%;
+
+    border-radius: 0 0 0 10px;
+
+    background-color: #140B5C;
+    clip-path: polygon(0 0, 67% 0, 95% 100%, 0% 100%);
+  }
+}
+
+.rechart__bar-title {
+  position: absolute;
+  top: -56px;
+  left: 0;
+  margin: 0;
+  padding: 10px 154px 20px 35px;
+  font-weight: 600;
+  font-size: 21px;
+  text-align: center;
+  letter-spacing: 1px;
+
+  z-index: 1;
+
+  border-radius: 8px 8px 8px 0;
+  color: #a7fafa;
+  background-color: #140B5C;
+}
+
+.rechart__bar-chart {
+  z-index: 1;
+}
+
+.rechart__bar-notice {
+  height: 176px;
+  width: 292px;
+  padding: 160px;
+
+  font-size: 20px;
+  text-align: center;
+
+  color: $lightCyan1;
+  z-index: 1;
 }

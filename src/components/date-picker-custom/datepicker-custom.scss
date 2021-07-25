@@ -1,5 +1,6 @@
 .datepicker {
   position: relative;
+  z-index: 2;
 }
 
 .datepicker__label:hover {
@@ -17,10 +18,14 @@
 	margin: 5px;
 	width: 210px;
 	height: 45px;
+
 	font-weight: 500;
-	font-size: 24px;
+	font-size: 21px;
 	line-height: 34px;
 	text-align: center;
+  color: $violet;
+
+  background-color: $lightCyan1;
 	border: 1px solid $black1;
 	border-radius: 6px;
   transition-duration: 150ms;

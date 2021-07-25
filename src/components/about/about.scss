@@ -76,8 +76,8 @@
   text-align: center;
   font-weight: 700;
   font-size: 42px;
-  line-height: 76px;
-  color: #2c36f3;
+  line-height: 130px;
+  color: $violet;
 
   &-text1 {
     font-family: 'LondrinaOutline', sans-serif;
@@ -99,12 +99,33 @@
   width: 120%;
   top: 0;
   left: 75%;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  color: white;
   background-color: $violet;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
   transition: all 0.4s linear;
 
   &--active {
     left: 2%;
+  }
+}
+
+.about__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  font-size: 30px;
+
+  &-item {
+    margin: 0 5px;
   }
 }
 

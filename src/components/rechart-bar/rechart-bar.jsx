@@ -39,33 +39,41 @@ const RechartBar = ({history}) => {
 
     setDataForChart(preparedArray);
 
-    setDimensionChart({width: 22 * (preparedArray.length + 1) - ((1 + (preparedArray.length + 1)) * (preparedArray.length + 1)), height: 400});
+    setDimensionChart({width: 22 * (preparedArray.length + 1) - ((1 + (preparedArray.length + 1)) * (preparedArray.length + 1)), height: 100});
   }, [history]);
 
   return (
-    <div className="rechart__bar block-style">
-      <ResponsiveContainer width={`${dimensionChart.width}%`} height={dimensionChart.height} className="rechartX">
-        <BarChart
-          width={300}
-          height={300}
-          data={dataForChart}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="USD" fill={RechartsColor.USD} />
-          <Bar dataKey="GBP" fill={RechartsColor.GBP} />
-          <Bar dataKey="EUR" fill={RechartsColor.EUR} />
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="rechart__bar">
+      <h3 className="rechart__bar-title">Сomparison of spending</h3>
+      {
+        history.length ? (
+          <ResponsiveContainer width={`${dimensionChart.width}%`} height={`${dimensionChart.height}%`} className="rechart__bar-chart">
+            <BarChart
+              width={300}
+              height={300}
+              data={dataForChart}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="USD" fill={RechartsColor.USD} />
+              <Bar dataKey="GBP" fill={RechartsColor.GBP} />
+              <Bar dataKey="EUR" fill={RechartsColor.EUR} />
+            </BarChart>
+          </ResponsiveContainer>)
+          : (
+            <div className="rechart__bar-notice">
+              <p className="rechart__bar-notice-text">To see the comparison of spending enter the amount and save the result</p>
+            </div>)
+      }
     </div>
   );
 };

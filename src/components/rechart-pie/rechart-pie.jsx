@@ -36,7 +36,7 @@ const RechartPie = ({history}) => {
   };
 
   return (
-    <div className="rechart__pie block-style">
+    <div className="rechart__pie">
       {/* {
         dataForChart[0].value || dataForChart[1].value || dataForChart[2].value ? console.log(`YES: `) : console.log(`NO`)
       } */}

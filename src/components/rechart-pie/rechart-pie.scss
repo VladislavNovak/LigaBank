@@ -1,7 +1,18 @@
 .rechart__pie {
+  position: absolute;
+  right: 472px;
+  top: 0;
+  width: 200px;
+  height: 200px;
+
   display: flex;
   justify-content: center;
-  flex: 1;
+
+  padding: 10px 10px 10px 10px;
+
+  border-radius: 10px 0 0 10px;
+  background-color: $blue1;
 
   transition: all 0.2s linear;
+  box-shadow: 3px 3px 9px rgba(0, 0, 0, .5);
 }

@@ -2,8 +2,9 @@
   font-size: 38px;
   margin-bottom: 12px;
   margin-top: auto;
-  color: $violet;
+  color: $lightCyan1;
   transition-duration: 300ms;
+  z-index: 1;
 
   &--left {
     transform: rotate(180deg)

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {Circles} from '..';
 
 const Banner = () => {
   return (
@@ -11,6 +12,8 @@ const Banner = () => {
         <Link className="banner__redirect" to="#">Calculate a Loan</Link>
       </div>
       <div className="banner__cards"></div>
+
+      <Circles></Circles>
     </section>
   );
 };

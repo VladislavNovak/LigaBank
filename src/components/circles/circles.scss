@@ -1,0 +1,120 @@
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  z-index: 2;
+  pointer-events: none;
+
+  & li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+
+    color: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    left: 5px;
+    bottom: -150px;
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 30%;
+    //   height: 30%;
+    //   top: 15%;
+    //   left: 15%;
+    //   background-color: white;
+    //   border-radius: 50%;
+    //   opacity: 15%;
+    // }
+  }
+}
+
+.circles li:nth-child(11) {
+  left: 5%;
+  font-size: 15em;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  font-size: 2em;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  font-size: 2em;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  font-size: 4em;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  font-size: 2em;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  font-size: 6em;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  font-size: 8em;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  font-size: 4em;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  font-size: 1em;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  font-size: 7em;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+
+@keyframes animate {
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.6;
+      // border-radius: 40%;
+      color: $violet;
+  }
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0.1;
+      // border-radius: 50%;
+      color: rgba(255, 255, 255, 0.2);
+  }
+}

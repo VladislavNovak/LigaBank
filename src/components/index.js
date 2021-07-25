@@ -1,6 +1,8 @@
 export {default as About} from './about/about.jsx';
 export {default as Banner} from './banner/banner.jsx';
 export {default as Converter} from './converter/converter.jsx';
+export {default as Circles} from './circles/circles.jsx';
+export {default as Calculator} from './calculator/calculator.jsx';
 export {default as Container} from './container/container.jsx';
 export {default as DatePickerCustom} from './date-picker-custom/date-picker-custom.jsx';
 export {default as Footer} from './footer/footer.jsx';

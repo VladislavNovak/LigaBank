@@ -4,11 +4,11 @@ import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {faCog} from '@fortawesome/free-solid-svg-icons';
-import {History, DatePickerCustom, Organizer} from '..';
+import {History, DatePickerCustom, Organizer, RechartBar} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
 
-const Converter = () => {
+const Calculator = () => {
   const resetState = (date = (new Date())) => ({
     [money.cash.FIRST]: 0,
     [money.type.FIRST]: `USD`,
@@ -127,7 +127,7 @@ const Converter = () => {
 
     setHistory(prevHistory);
 
-    scroller.scrollTo(`Converter`, {
+    scroller.scrollTo(`Calculator`, {
       duration: 800,
       delay: 0,
       smooth: true,
@@ -142,60 +142,65 @@ const Converter = () => {
   };
 
   return (
-    <section id="Converter" className="converter">
+    <section id="Calculator" className="calculator">
       <h2 className="visually-hidden">Calculator</h2>
-      <form className="converter__form" onSubmit={handleSubmit}>
-        <h3 className="converter__title">Currency Converter</h3>
-        <div className="converter__line">
-          <Organizer
-            legend={`I have the amount`}
-            classElement={`organazer__cash`}
-            isCurrentActionValid={isCurrentActionValid}
-            cashName={money.cash.FIRST}
-            cashValue={currentAction[money.cash.FIRST]}
-            handleAction={handleAction}
-            handleLabelFocus={handleLabelFocus}
-            handleBlurInput={handleBlurInput}
-            typeName={money.type.FIRST}
-            typeValue={currentAction[money.type.FIRST]}
-            isInputFocusStatus={isInputFocusStatus} />
+      <div className="calculator__left-side">
+        <form className="calculator__form" onSubmit={handleSubmit}>
+          <h3 className="calculator__form-title">Currency Calculator</h3>
+          <div className="calculator__form-line">
+            <Organizer
+              legend={`I have the amount`}
+              classElement={`organazer__cash`}
+              isCurrentActionValid={isCurrentActionValid}
+              cashName={money.cash.FIRST}
+              cashValue={currentAction[money.cash.FIRST]}
+              handleAction={handleAction}
+              handleLabelFocus={handleLabelFocus}
+              handleBlurInput={handleBlurInput}
+              typeName={money.type.FIRST}
+              typeValue={currentAction[money.type.FIRST]}
+              isInputFocusStatus={isInputFocusStatus} />
 
-          <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
+            <FontAwesomeIcon className={direction} icon={faArrowAltCircleRight} />
 
-          <Organizer
-            legend={`I want to buy`}
-            classElement={`organazer__exchanged`}
-            isCurrentActionValid={isCurrentActionValid}
-            cashName={money.cash.SECOND}
-            cashValue={currentAction[money.cash.SECOND]}
-            handleAction={handleAction}
-            handleLabelFocus={handleLabelFocus}
-            handleBlurInput={handleBlurInput}
-            typeName={money.type.SECOND}
-            typeValue={currentAction[money.type.SECOND]}
-            isInputFocusStatus={isInputFocusStatus} />
-        </div>
-        <div className="converter__line">
-          <DatePickerCustom
-            selectedDate={currentAction[money.selectedDate]}
-            handleAction={handleAction} />
+            <Organizer
+              legend={`I want to buy`}
+              classElement={`organazer__exchanged`}
+              isCurrentActionValid={isCurrentActionValid}
+              cashName={money.cash.SECOND}
+              cashValue={currentAction[money.cash.SECOND]}
+              handleAction={handleAction}
+              handleLabelFocus={handleLabelFocus}
+              handleBlurInput={handleBlurInput}
+              typeName={money.type.SECOND}
+              typeValue={currentAction[money.type.SECOND]}
+              isInputFocusStatus={isInputFocusStatus} />
+          </div>
+          <div className="calculator__form-line">
+            <DatePickerCustom
+              selectedDate={currentAction[money.selectedDate]}
+              handleAction={handleAction} />
 
-          <button
-            className="converter__submit"
-            type="submit">
-            <span>Add</span>
-            <FontAwesomeIcon icon={faCog} className="converter__submit-icon" />
-          </button>
-        </div>
-      </form>
+            <button
+              className="calculator__submit"
+              type="submit">
+              <span>Add</span>
+              <FontAwesomeIcon icon={faCog} className="calculator__submit-icon" />
+            </button>
+          </div>
+        </form>
+
+        <RechartBar history={history} />
+      </div>
 
       <History
         history={history}
         onClickBackspace={handleClickBackspace}
         onClickReset={handleClickReset}
         onListItemClick={onListItemClick} />
+
     </section>
   );
 };
 
-export default Converter;
+export default Calculator;

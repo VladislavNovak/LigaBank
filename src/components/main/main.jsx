@@ -1,11 +1,12 @@
 import React from 'react';
-import {Converter, Banner} from '..';
+import {Banner, Calculator} from '..';
+// import {Converter, Banner} from '..';
 
 const Main = () => {
   return (
     <main className="main">
       <Banner />
-      <Converter />
+      <Calculator />
     </main>
   );
 };
