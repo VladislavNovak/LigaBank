@@ -165,6 +165,13 @@
   }
 }
 
+.about__top-layer-text {
+  font-family: 'Indie Flower';
+  // text-align: right;
+  // font-size: 18px;
+  // font-weight: 500;
+}
+
 @keyframes photoGlitch
 {
 	0% {clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);}

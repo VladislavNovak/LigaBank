@@ -11,15 +11,15 @@
   &::before {
     content: '';
     position: absolute;
-    top: -63px;
-    left: -12px;
+    top: -64px;
+    left: -10px;
     height: 67px;
     width: 48%;
 
     border-radius: 10px 0 0 2px;
     background-color: $violet;
 
-    transform: perspective(5px) rotateX(0.7deg) translateZ(-1px);
+    transform: perspective(5px) rotateX(0.9deg) translateZ(-1px);
     z-index: 2;
   }
 }

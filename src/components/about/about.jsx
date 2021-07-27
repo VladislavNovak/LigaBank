@@ -58,7 +58,7 @@ const About = () => {
             <li className="about__list-item">
               <FontAwesomeIcon icon={faGithubSquare} className="about__list-item-icon" /></li>
           </ul>
-          <p>`The only way to do great work is to love what you do`</p>
+          <p className="about__top-layer-text">`The only way to do great work is to love what you do`</p>
         </div>
         <div className={`about__portrait ${idPopupActive && `about__portrait--active`}`}>
           <img className="about__portrait-photo1"

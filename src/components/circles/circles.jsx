@@ -17,6 +17,9 @@ const Circles = () => {
       <li><FontAwesomeIcon className="circles__sign" icon={faBtc} /></li>
       <li><FontAwesomeIcon className="circles__sign" icon={faPoundSign} /></li>
       <li><FontAwesomeIcon className="circles__sign" icon={faEuroSign} /></li>
+      <li><FontAwesomeIcon className="circles__sign" icon={faYenSign} /></li>
+      <li><FontAwesomeIcon className="circles__sign" icon={faRubleSign} /></li>
+      <li><FontAwesomeIcon className="circles__sign" icon={faHryvnia} /></li>
     </ul>
   );
 };

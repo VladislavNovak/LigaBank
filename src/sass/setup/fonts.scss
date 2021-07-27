@@ -123,3 +123,12 @@
        url('../../fonts/pt-mono-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../../fonts/pt-mono-v8-latin-regular.svg#PTMono') format('svg'); /* Legacy iOS */
 }
+/* Indie Flower, cursive*/
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../../fonts/IndieFlower-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../fonts/IndieFlower-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+}

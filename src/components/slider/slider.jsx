@@ -1,6 +1,7 @@
 import React from 'react';
-import slider1 from '../../img/workharder.jpg';
-import slider2 from '../../img/retrozone.jpg';
+import slider1 from '../../img/pexels-adrien.jpg';
+import slider2 from '../../img/pexels-element.jpg';
+import slider3 from '../../img/pexels-michael.jpg';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
@@ -9,7 +10,7 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Slider = () => {
   return (
-    <div className='slider'>
+    <div className="awesomeSliderCustom">
 
       <AutoplaySlider
         // play
@@ -18,6 +19,7 @@ const Slider = () => {
 
         <div data-src={slider1} />
         <div data-src={slider2} />
+        <div data-src={slider3} />
       </AutoplaySlider>
 
     </div>
