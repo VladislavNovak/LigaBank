@@ -3,7 +3,8 @@ import dayjs from 'dayjs';
 import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
-import {faCog} from '@fortawesome/free-solid-svg-icons';
+import {faChartLine, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+// import {faCog, faCog, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import {History, DatePickerCustom, Organizer, RechartBar} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
@@ -135,6 +136,12 @@ const Calculator = () => {
     });
   };
 
+  const handleClear = (evt) => {
+    evt.preventDefault();
+    setCurrentAction(resetState());
+    setInputFocusStatus(false);
+  };
+
   const onListItemClick = ({id, status}) => {
     const prevHistory = [...history];
     prevHistory[id].status = status;
@@ -181,13 +188,16 @@ const Calculator = () => {
               selectedDate={currentAction[money.selectedDate]}
               handleAction={handleAction} />
 
-            <button
-              className="calculator__submit"
-              type="submit">
+            <button className="calculator__submit" type="submit">
               <span>Add</span>
-              <FontAwesomeIcon icon={faCog} className="calculator__submit-icon" />
+              <FontAwesomeIcon icon={faChartLine} className="calculator__submit-icon" />
             </button>
           </div>
+          <button
+            onClick={handleClear}
+            className="calculator__clear">
+            <FontAwesomeIcon icon={faWindowClose} className="calculator__clear-icon" />
+          </button>
         </form>
 
         <RechartBar history={history} />

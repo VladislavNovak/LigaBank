@@ -41,7 +41,7 @@ const About = () => {
           <h2 className="about__title-text2">Based on React</h2>
         </div>
         <div className={`about__top-layer ${idPopupActive && `about__top-layer--active`}`}>
-          <p>Novak Vlad <span>Front End Developer</span></p>
+          <p className="about__top-name">Novak Vlad <span>Front End Developer</span></p>
           <ul className="about__list">
             <li className="about__list-item">
               <FontAwesomeIcon icon={faJsSquare} className="about__list-item-icon" /></li>
