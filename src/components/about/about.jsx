@@ -39,9 +39,17 @@ const About = () => {
           <h2 className="about__title-text2">Based on React</h2>
         </div>
         <div className={`about__top-layer ${idPopupActive && `about__top-layer--active`}`}>
-          <p className="about__top-name">Novak Vlad
-            <span className="about__top-span">Front End Developer</span>
-          </p>
+          <div className="presentation">
+            <div className="presentation__prefix">
+              <p className="presentation__by">by</p>
+              <ul className="presentation__list">
+                <li className="presentation__item">designed</li>
+                <li className="presentation__item">created</li>
+                <li className="presentation__item">executed</li>
+              </ul>
+            </div>
+            <p className="presentation__author">Novak</p>
+          </div>
           <ul className="about__list">
             <li className="about__list-item">
               <FontAwesomeIcon icon={faJsSquare} className="about__list-item-icon" /></li>

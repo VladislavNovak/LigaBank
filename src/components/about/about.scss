@@ -121,7 +121,8 @@
 
   &:hover {
     z-index: 2;
-    transform: scale(1.35);
+    transform: scale(1.4);
+    color: $blue4;
   }
 }
 
@@ -133,7 +134,8 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  border: $blue2 6px solid;
+  border: $steelBlue 6px solid;
+  // border: $blue4 6px solid;
   background-color: $blue2;
   transition: all 0.4s linear;
   transform: rotate(-2deg);
@@ -161,33 +163,99 @@
   }
 }
 
-.about__top-name {
+.presentation {
   position: relative;
-  font-size: 34px;
-  font-weight: 500;
-  margin: 6px 200px 4px 10px;
+}
+
+.presentation__author {
+  position: relative;
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0px 22px 0px 176px;
+
+  // font-family: 'LondrinaSolid';
+  // letter-spacing: 4px;
+
+  // &::before{
+  //   content: 'NOVAK';
+  //   position: absolute;
+  //   top: -1px;
+  //   left: -3px;
+
+  //   font-weight: 700;
+  //   z-index: -1;
+
+  //   color: $blue4;
+  //   font-family: 'LondrinaOutline', sans-serif;
+  // }
+}
+
+.presentation__prefix {
+  position: absolute;
+  left: 5px;
+  top: 12px;
+  width: 176px;
+
+  overflow: hidden;
+
+  font-size: 25px;
+  font-weight: 600;
+
+  &::before {
+    content: '<';
+    left: 16px;
+  }
 
   &::after {
-    content: '';
+    content: '>';
+    right: 9px;
+  }
+
+  &:after, &:before {
     position: absolute;
-    top: 13px;
-    left: 139px;
-    width: 188px;
-    height: 3.5px;
-    background-color: $lightCyan1;
+    top: 0;
+    font-size: 28px;
+    color: $blue4;
+    animation: opacity-breckets 1.6s infinite;
   }
 }
 
-.about__top-span {
-  position: absolute;
-  left: 155px;
-  top: 25px;
-  width: 190px;
+.presentation__by {
+  text-align: right;
+  margin: 0 25px 0 0;
+}
 
-  color: $pink2;
-  font-family: 'PT Mono';
-  font-size: 14px;
-  font-weight: 600;
+.presentation__list {
+  position: absolute;
+  left: -10px;
+  top: 0;
+  margin-top: 0;
+  text-align: right;
+  list-style: none;
+
+  animation-name: change;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+
+  & li:nth-child(2) {
+    letter-spacing: 2px;
+  }
+}
+
+@keyframes change {
+  0%, 20%, 100%  {
+    transform: translateY(0);}
+  24%, 44% {
+    transform: translateY(-33.3%);}
+  48%, 68% {
+    transform: translateY(-66.6%);}
+  72%, 96% {
+    transform: translateY(-33.3%);}
+}
+
+@keyframes opacity-breckets {
+  0%, 100% {opacity:0;}
+  50% {opacity:1;}
 }
 
 @keyframes photoGlitch
