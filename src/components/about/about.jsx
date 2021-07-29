@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCss3Alt, faGithubSquare, faGitSquare, faHtml5, faJsSquare, faReact, faSass} from '@fortawesome/free-brands-svg-icons';
-// import {faAddressBook, faAt, faBars, faCat, faCodeBranch, faCog, faHome, faTimes, faUserPlus} from '@fortawesome/free-solid-svg-icons';
-// import {faEdit} from '@fortawesome/free-regular-svg-icons';
 
 const About = () => {
   // const [activeMenu, setActiveMenu] = useState(false);
@@ -41,7 +39,9 @@ const About = () => {
           <h2 className="about__title-text2">Based on React</h2>
         </div>
         <div className={`about__top-layer ${idPopupActive && `about__top-layer--active`}`}>
-          <p className="about__top-name">Novak Vlad <span>Front End Developer</span></p>
+          <p className="about__top-name">Novak Vlad
+            <span className="about__top-span">Front End Developer</span>
+          </p>
           <ul className="about__list">
             <li className="about__list-item">
               <FontAwesomeIcon icon={faJsSquare} className="about__list-item-icon" /></li>

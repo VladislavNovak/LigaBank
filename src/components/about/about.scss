@@ -48,25 +48,13 @@
   border: $lightCyan 1px solid;
   border-radius: 5px;
   background: linear-gradient($lightCyan 20%, $blue4 95%);
-  // background: linear-gradient(-66.001deg, $blue2 60%, $lightCyan 60%, $blue4 95%);
   background-size: 210%;
   transition: all 0.4s linear;
 
-  // &:hover {
-  //   background-position: -580px;
-  //   box-shadow:5px 5px 25px rgba(0,0,0, .5);
-  //   transform: translate(-3px, -3px);
-  // }
   &:hover {
-    // background-position: -580px;
     box-shadow:5px 5px 25px rgba(0,0,0, .5);
-    transform: translate(-3px, -3px);
+    transform: translate(-1px, -1px);
   }
-
-  // &:hover .about__portrait,
-  // &:hover .about__top-layer {
-  //   left: 2%;
-  // }
 }
 
 .about__title {
@@ -106,7 +94,8 @@
   justify-content: space-between;
   align-items: center;
 
-  color: white;
+  color: $lightCyan1;
+
   background-color: $violet;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
   transition: all 0.4s linear;
@@ -123,10 +112,16 @@
   padding: 0;
   list-style-type: none;
 
-  font-size: 30px;
+  font-size: 33px;
+}
 
-  &-item {
-    margin: 0 5px;
+.about__list-item {
+  margin: 0 6px;
+  transition: 500ms;
+
+  &:hover {
+    z-index: 2;
+    transform: scale(1.35);
   }
 }
 
@@ -166,12 +161,34 @@
   }
 }
 
-// .about__top-layer-text {
-  // font-family: 'Indie Flower';
-  // text-align: right;
-  // font-size: 18px;
-  // font-weight: 500;
-// }
+.about__top-name {
+  position: relative;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 6px 200px 4px 10px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 139px;
+    width: 188px;
+    height: 3.5px;
+    background-color: $lightCyan1;
+  }
+}
+
+.about__top-span {
+  position: absolute;
+  left: 155px;
+  top: 25px;
+  width: 190px;
+
+  color: $pink2;
+  font-family: 'PT Mono';
+  font-size: 14px;
+  font-weight: 600;
+}
 
 @keyframes photoGlitch
 {
