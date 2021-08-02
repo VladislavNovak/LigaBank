@@ -4,45 +4,56 @@ import {Logo} from '..';
 
 const Header = () => {
 
-  let [isElementHidden, setElementHidden] = useState(false);
+  let [isHeaderHidden, setHeaderHidden] = useState(false);
   let prevScrollpos = window.pageYOffset;
 
-  window.onscroll = function () {
-
+  const checkScrollTop = () => {
     const currentScrollPos = window.pageYOffset;
-
-    prevScrollpos = (prevScrollpos > currentScrollPos) ? (setElementHidden(false), currentScrollPos) : (setElementHidden(true), currentScrollPos);
+    prevScrollpos = (prevScrollpos > currentScrollPos) ? (setHeaderHidden(false), currentScrollPos) : (setHeaderHidden(true), currentScrollPos);
   };
 
+  window.addEventListener(`scroll`, checkScrollTop);
+
   return (
-    <header className={`header ${isElementHidden && `header--hidden`}`}>
+    <header className={`header ${isHeaderHidden && `header--hidden`}`}>
       <Logo />
       <nav className="header__navigator">
         <ul className="header__navigator-list">
           <li className="header__navigator-item">
-            <Link to="#">Calculate a Loan</Link>
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={1100}
+              to="Banner">Banner</Link>
           </li>
           <li className="header__navigator-item">
             <Link
               activeClass="active"
               spy={true}
               smooth={true}
-              offset={-70}
-              duration={500}
-              to="Converter">Currency Converter</Link>
+              offset={-50}
+              duration={1000}
+              to="Calculator">Calculator</Link>
           </li>
           <li className="header__navigator-item">
             <Link
               activeClass="active"
               spy={true}
-              smooth={true}
-              offset={-70}
-              duration={700}
-              to="history">History</Link>
+              smooth='easeInOutSine'
+              offset={-130}
+              duration={1100}
+              to="Chart">Chart</Link>
           </li>
-          <li className="header__navigator-item"><Link to="#">Contacts</Link></li>
           <li className="header__navigator-item">
-            <Link to="#">Services</Link>
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth='easeInOutSine'
+              offset={-900}
+              duration={1300}
+              to="About">About</Link>
           </li>
         </ul>
       </nav>

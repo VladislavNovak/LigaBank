@@ -4,7 +4,6 @@ import {scroller} from 'react-scroll';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleRight} from '@fortawesome/free-regular-svg-icons';
 import {faChartLine, faWindowClose} from '@fortawesome/free-solid-svg-icons';
-// import {faCog, faCog, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import {History, DatePickerCustom, Organizer, RechartBar} from '..';
 import {PATTERN, money} from '../../js/constants';
 import {getCurrencies, rates} from '../../services/requests';
@@ -132,7 +131,7 @@ const Calculator = () => {
       duration: 800,
       delay: 0,
       smooth: true,
-      offset: -100
+      offset: -30
     });
   };
 

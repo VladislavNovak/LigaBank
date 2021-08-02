@@ -18,7 +18,7 @@ const About = () => {
   };
 
   return (
-    <div className="about">
+    <div id="About" className="about">
       <div className="about__bottom">
         <p className="about__bottom-copyright">Copyright © 2021 All rights reserved</p>
         <ul className="about__bottom-list">

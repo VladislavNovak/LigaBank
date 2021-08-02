@@ -109,7 +109,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   list-style-type: none;
 
   font-size: 33px;
@@ -135,7 +135,6 @@
   height: 130px;
   border-radius: 50%;
   border: $steelBlue 6px solid;
-  // border: $blue4 6px solid;
   background-color: $blue2;
   transition: all 0.4s linear;
   transform: rotate(-2deg);
@@ -172,28 +171,12 @@
   font-size: 35px;
   font-weight: 600;
   margin: 0px 22px 0px 176px;
-
-  // font-family: 'LondrinaSolid';
-  // letter-spacing: 4px;
-
-  // &::before{
-  //   content: 'NOVAK';
-  //   position: absolute;
-  //   top: -1px;
-  //   left: -3px;
-
-  //   font-weight: 700;
-  //   z-index: -1;
-
-  //   color: $blue4;
-  //   font-family: 'LondrinaOutline', sans-serif;
-  // }
 }
 
 .presentation__prefix {
   position: absolute;
   left: 5px;
-  top: 12px;
+  top: 15px;
   width: 176px;
 
   overflow: hidden;
@@ -208,12 +191,12 @@
 
   &::after {
     content: '>';
-    right: 9px;
+    right: 11px;
   }
 
   &:after, &:before {
     position: absolute;
-    top: 0;
+    top: -5px;
     font-size: 28px;
     color: $blue4;
     animation: opacity-breckets 1.6s infinite;
@@ -222,13 +205,13 @@
 
 .presentation__by {
   text-align: right;
-  margin: 0 25px 0 0;
+  margin: -5px 25px 0 0;
 }
 
 .presentation__list {
   position: absolute;
   left: -10px;
-  top: 0;
+  top: -5px;
   margin-top: 0;
   text-align: right;
   list-style: none;

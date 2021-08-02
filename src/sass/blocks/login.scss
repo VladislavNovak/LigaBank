@@ -27,11 +27,11 @@
 
   &__text {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 22px;
-    padding: 0 5px;
+    padding: 0 10px;
     word-wrap: break-word;
-    color: $lightCyan;
+    color: $lightCyan1;
     user-select: none;
     transition: 0.5s;
 
@@ -42,7 +42,7 @@
   }
 
   svg {
-    width: 16px;
+    width: 20px;
     height: auto;
     fill: $white1;
   }
