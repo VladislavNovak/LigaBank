@@ -1,18 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from "react-scroll";
 import {Logo} from '..';
 
-const Header = () => {
-
-  let [isHeaderHidden, setHeaderHidden] = useState(false);
-  let prevScrollpos = window.pageYOffset;
-
-  const checkScrollTop = () => {
-    const currentScrollPos = window.pageYOffset;
-    prevScrollpos = (prevScrollpos > currentScrollPos) ? (setHeaderHidden(false), currentScrollPos) : (setHeaderHidden(true), currentScrollPos);
-  };
-
-  window.addEventListener(`scroll`, checkScrollTop);
+const Header = ({isHeaderHidden}) => {
 
   return (
     <header className={`header ${isHeaderHidden && `header--hidden`}`}>
@@ -75,6 +66,10 @@ const Header = () => {
       </Link>
     </header>
   );
+};
+
+Header.propTypes = {
+  isHeaderHidden: PropTypes.bool,
 };
 
 export default Header;

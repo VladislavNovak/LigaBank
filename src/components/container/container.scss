@@ -1,0 +1,12 @@
+.container {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+	width: 1366px;
+	background-color: $lightCyan;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  button {
+    cursor: pointer;
+  }
+}

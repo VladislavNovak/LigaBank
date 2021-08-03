@@ -31,7 +31,7 @@ const History = ({history, handleAction, onClickBackspace, onClickReset, onListI
               <p className="history__notice-text">To see the history of conversion enter the amount and save the result</p>
             </div>)
       }
-      <div className="history__buttons">
+      <div className={`history__buttons ${history.length && `history__buttons--active`}`}>
         <button
           aria-label="backspace"
           name="backspace"
