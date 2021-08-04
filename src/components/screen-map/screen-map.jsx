@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import React, {useState} from 'react';
-import {Header, Main, Footer} from '..';
+import {Header, CoreScreenMap, Footer} from '..';
 import {useScrollPosition} from '../../js/scroll';
 
-const Container = () => {
+const ScreenMap = () => {
 
   const [hideHeaderOnScroll, setHeaderHideOnScroll] = useState(false);
 
@@ -17,10 +16,10 @@ const Container = () => {
   return (
     <div className="container">
       <Header isHeaderHidden={hideHeaderOnScroll}/>
-      <Main />
+      <CoreScreenMap />
       <Footer />
     </div>
   );
 };
 
-export default Container;
+export default ScreenMap;

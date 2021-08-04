@@ -1,8 +1,7 @@
 import React from 'react';
 import {Banner, Calculator} from '..';
-// import {Converter, Banner} from '..';
 
-const Main = () => {
+const CoreScreenMain = () => {
   return (
     <main className="main">
       <Banner />
@@ -11,4 +10,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default CoreScreenMain;

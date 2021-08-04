@@ -6,7 +6,7 @@
 @import "./blocks/arrows.scss";
 @import "./blocks/auxilairy.scss";
 @import "../components/banner/banner.scss";
-@import "../components/container/container.scss";
+@import "./blocks/container.scss";
 @import "./blocks/body.scss";
 @import "./blocks/block-style.scss";
 @import "../components/circles/circles.scss";
@@ -23,3 +23,4 @@
 @import "../components/rechart-bar/rechart-bar.scss";
 @import "../components/rechart-pie/rechart-pie.scss";
 @import "../components/slider/slider.scss";
+@import "../components/branches/branches.scss";

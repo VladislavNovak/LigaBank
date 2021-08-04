@@ -13,7 +13,7 @@ const Banner = () => {
           <li
             key={name}
             className="banner">
-            <Link className="banner__front" to="#">
+            <Link className="banner__front" to="/map">
               <img className="banner__front-img" src={path} alt="" />
               <div className="banner__front-visit">
                 <p>Visit</p>
