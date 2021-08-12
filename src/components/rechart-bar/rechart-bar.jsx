@@ -43,7 +43,7 @@ const RechartBar = ({history}) => {
   }, [history]);
 
   return (
-    <div id="Chart" className="rechart__bar">
+    <div id="Chart" className={`rechart__bar ${history.length && `rechart__bar--active`}`}>
       <h3 className="rechart__bar-title">Сomparison of spending</h3>
       {
         history.length ? (

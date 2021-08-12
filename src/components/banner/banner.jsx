@@ -8,11 +8,16 @@ const Banner = () => {
   return (
     <section id="Banner" className="banners__wrapper">
       <h1 className="visually-hidden">Причины обратиться в Лига Банк:</h1>
-      <ul className="banners">{
+      <ul className="banner-list">{
         Banners.map(({name, path, title, tagline}) => (
           <li
             key={name}
             className="banner">
+            <div className="banner__back">
+              <h3 className="banner__back-title">{title}</h3>
+              <p className="banner__back-letter">{title.charAt(0)}</p>
+              <p className="banner__back-tagline">{tagline}</p>
+            </div>
             <Link className="banner__front" to="/map">
               <img className="banner__front-img" src={path} alt="" />
               <div className="banner__front-visit">
@@ -21,15 +26,9 @@ const Banner = () => {
                 <p>branches</p>
               </div>
             </Link>
-            <div className="banner__back">
-              <h3 className="banner__back-title">{title}</h3>
-              <p className="banner__back-letter">{title.charAt(0)}</p>
-              <p className="banner__back-tagline">{tagline}</p>
-            </div>
           </li>
         ))}
       </ul>
-
       <Circles></Circles>
     </section>
   );

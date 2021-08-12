@@ -1,10 +1,11 @@
 .rechart__bar {
   position: relative;
   width: 760px;
-  height: 528px;
+  height: 228px;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   margin: 10px 5px 20px 20px;
   padding: 10px 10px 10px 10px;
@@ -12,7 +13,7 @@
   border-radius: 0 10px 10px 10px;
   background-color: $blue1;
 
-  transition: all 0.2s linear;
+  transition: all 0.3s ease-out;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, .5);
 
   &::after {
@@ -20,13 +21,23 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 598px;
+    height: 298px;
     width: 80%;
 
     border-radius: 0 0 0 10px;
+    transition: all 0.3s ease-out;
 
     background-color: #140B5C;
-    clip-path: polygon(0 0, 67% 0, 95% 100%, 0% 100%);
+    clip-path: polygon(0 0, 67% 0, 83% 100%, 0% 100%);
+  }
+
+  &--active {
+    height: 528px;
+
+    &::after {
+      height: 598px;
+      clip-path: polygon(0 0, 67% 0, 95% 100%, 0% 100%);
+    }
   }
 }
 
@@ -55,7 +66,7 @@
 .rechart__bar-notice {
   height: 176px;
   width: 292px;
-  padding: 160px;
+  // padding: 160px;
 
   font-size: 20px;
   text-align: center;

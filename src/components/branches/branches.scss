@@ -1,12 +1,9 @@
 .branches {
-  position: relative;
-  width: 100%;
-  height: 1400px;
+  width: auto;
 
 	display: flex;
   justify-content: center;
-	padding: 110px 50px 50px 50px;
-	// background-color: $blue1;
+	padding: 120px 50px 50px 50px;
 
 	background-image: url(/img/branches-bg.svg);
 	background-repeat: no-repeat;
@@ -14,31 +11,140 @@
 	background-position: center bottom;
 }
 
-.branches__caption {
-  font-weight: bold;
-  font-size: 65px;
-  line-height: 71px;
-  text-transform: uppercase;
-  color: white;
+.branch {
+  position: relative;
+  display: flex;
 
-  max-width: 1200px;
-  margin: 20px auto 20px auto;
-  padding-left: 125px;
-  padding-right: 125px;
-}
+  height: 810px;
 
-.map {
-  position: absolute;
-  width: 550px;
-  height: 600px;
-  top: 250px;
-  left: 50%;
-  transform: translate(-50%);
-
-  border: 5px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   box-shadow: 13px 12px 28px 0px rgba(1, 9, 15, 0.47);
+}
 
+.branch__side {
+  width: 550px;
 
-  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &-caption {
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 71px;
+    text-transform: uppercase;
+    color: white;
+
+    margin: 20px auto 20px auto;
+    padding-left: 125px;
+    padding-right: 125px;
+  }
+
+  &-video {
+    width: 506px;
+    height: 265px;
+    margin: 20px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 13px 12px 28px 0px rgba(1, 9, 15, 0.47);
+    background-color: white;
+  }
+}
+
+.branch__scrolllist {
+  width: 400px;
+
+  overflow: hidden;
+}
+
+.branch__scrolllist-scrollhidden {
+  width: 100%;
+  height: 100%;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0 25px 0 0;
+  overflow-y: scroll;
+}
+
+.branch__scrolllist-item {
+  width: 80%;
+  margin: 20px 0 20px auto;
+  padding: 0 20px 20px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  border-top: 1px solid rgba(255,255,255, 0.5);
+  border-left: 1px solid rgba(255,255,255, 0.5);
+
+  backdrop-filter: blur(5px);
+
+  &-title {
+    flex: 1 100%;
+    font-weight: 700;
+    font-size: 23px;
+    text-align: right;
+    letter-spacing: 1px;
+    color: $violet;
+    // color: $lightCyan1;
+  }
+
+  &-photo {
+    width: 100%;
+    height: 380px;
+
+    border-radius: 8px;
+  }
+
+  &-bottomline {
+    display: flex;
+    align-items: center;
+  }
+
+  &-view {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    min-height: 48px;
+    margin: 8px;
+
+    font-weight: 500;
+    font-size: 21px;
+
+    color: $lightCyan1;
+    background-color: $violet;
+    border: $blue1;
+    border-radius: 6px;
+  }
+
+  &-location {
+    width: 40%;
+    margin-left: auto;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: $lightCyan1;
+    text-align: right;
+  }
+}
+
+.branch__map {
+  position: absolute;
+  width: 590px;
+  height: 400px;
+  top: 100px;
+  left: -50px;
+
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 13px 12px 28px 0px rgba(1, 9, 15, 0.47);
+  background-color: white;
 }
